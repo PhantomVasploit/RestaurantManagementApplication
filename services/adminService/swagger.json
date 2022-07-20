@@ -1,0 +1,23 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Restuarant Management System",
+    "description": "Administrator API documentation for the restuarant management application made by Paul Sanga",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://apache.org/"
+    }
+  },
+  "host": "http://127.0.0.1:5000",
+  "basePath": "/api/admin",
+  "tag": [
+    {
+      "name": "Administrator",
+      "description": "API for administrator in the system"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consume": ["application/json"],
+  "produces": ["application/json"]
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "node src/app.js",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose --detectOpenHandles"
   },
   "author": "Paul Sanga",
   "license": "ISC",
@@ -28,7 +28,6 @@
     "jest": "^28.1.3",
     "nodemon": "^2.0.19",
     "supertest": "^6.2.4",
-    "swagger-ui-express": "^4.5.0",
-    "yamljs": "^0.3.0"
+    "swagger-ui-express": "^4.5.0"
   }
 }
