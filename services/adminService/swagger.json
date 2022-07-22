@@ -1,23 +1,155 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "Restuarant Management System",
-    "description": "Administrator API documentation for the restuarant management application made by Paul Sanga",
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://apache.org/"
-    }
-  },
-  "host": "http://127.0.0.1:5000",
-  "basePath": "/api/admin",
-  "tag": [
-    {
-      "name": "Administrator",
-      "description": "API for administrator in the system"
-    }
-  ],
-  "schemes": ["http", "https"],
-  "consume": ["application/json"],
-  "produces": ["application/json"]
+    "swagger": "2.0",
+    "info": {
+      "description": "This is administrator's authentication and authorization API for the Restaurant Management System",
+      "version": "1.0.0",
+      "title": "Restaurant Management System Administrator Authentication and Authorization API",
+      "contact": {
+        "name": "Paul Sanga",
+        "email": "paulvasgit99@gmail.com"
+      },
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/api/admin",
+    "tags": [{
+      "name": "System Administrator",
+      "description": "The super user of the Restaurant Management System"
+      }],
+      "schemes": ["http", "https"],
+      "paths": {
+        "/register": {
+          "post": {
+            "tags": ["Administrator"],
+            "summary": "Creates a new administrator account",
+            "descritpion": "Takes in administrator's details through a form and creates a new administrator account",
+            "operationId": "newAdministrator account",
+            "consumes": ["application/json"],
+            "produces": ["application/json"],
+            "parameters": [
+                {
+                "in": "body",
+                "name": "body",
+                "description": "Administrator object that needs to be added to the database",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/Admin"
+                }
+              }
+            ],
+            "responses": {
+              "201": {
+                "description": "successful operation",
+                "schema": {
+                  "$ref": "#/definitions/ApiResponse"
+                }
+              },
+              "500": {
+                "description": "Internal Server error"
+              }
+            }
+          }
+        },
+        "/login": {
+          "post": {
+            "tags": ["Administrator"],
+            "summary": "Logs the administrator into the system",
+            "operationId": "loginAdministrator",
+            "consumes": ["application/json"],
+            "produces": ["application/json"],
+            "parameters": [
+              {
+                "in": "body",
+                "name": "body",
+                "description": "Administrator login credentials",
+                "required": true,
+                "schema": {
+                  "$ref": "#/definitions/AdminLoginCredentials"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "schema": {
+                  "$ref": "#/definitions/ApiResponse"
+                }
+              },
+              "400": {
+                "description": "Invalid login credentials"
+              }
+            }
+          }
+        }
+      },
+      "definitions": {
+        "ApiResponse": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "type": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        },
+        "Admin": {
+          "type": "object",
+          "required": ["firstName", "lastName", "email", "password"],
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "This is the aut-generated administrator's identification string",
+              "uniqueItems": true,
+              "example": "62da19e46ffca17dc3b9de80"
+            },
+            "firstName": {
+              "type": "string",
+              "description": "This is the administrator's first name",
+              "example": "Paul"
+            },
+            "lastName": {
+              "type": "string",
+              "description": "This is the administrator's last name",
+              "example": "Sanga"
+            },
+            "email": {
+              "type": "string",
+              "description": "This is the administrator's email address",
+              "uniqueItems": true,
+              "example": "paulvasgit99@gmail.com"
+            },
+            "password": {
+              "type": "string",
+              "description": "This is the administrator's passkey that would be used during authentication process",
+              "example": "abc1234"
+            }
+          }
+        },
+        "AdminLoginCredentials":{
+          "type": "object",
+          "required": ["email", "password"],
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "This is the administrator's email address",
+              "uniqueItems": true,
+              "example": "paulvasgit99@gmail.com"
+            },
+            "password": {
+              "type": "string",
+              "description": "This is the administrator's passkey that would be used during authentication process",
+              "example": "abc1234"
+            }
+          }
+        }
+      }
 }

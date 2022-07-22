@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "test": "jest --watchAll --verbose --detectOpenHandles"
   },
   "author": "Paul Sanga",
