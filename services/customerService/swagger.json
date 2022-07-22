@@ -1,0 +1,270 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "descritpion": "This is the customer's authentication and authorization API service for the Restaurant Management System",
+    "version": "1.0.0",
+    "title": "Restaurant Management System Customer authentication and authorization API",
+    "contact": {
+      "name": "Paul Sanga",
+      "email": "paulvasgit99@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "127.0.0.1:5001",
+  "basePath": "/api/customer",
+  "tags": [
+    {
+      "name": "Customer",
+      "descritpion": "The end target user of the Restaurant Management System"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/register": {
+      "post":{
+        "tags": ["Customer"],
+        "summary": "Creates a new customer account",
+        "description": "Accepts customer's details provided through a form and creates a new customer account",
+        "operationId": "newCustomerAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer object that needs to be saved to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Logs the Customer into the system",
+        "operationId": "loginCustomer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer login credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerLoginCredentials"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid login credentials"
+          },
+          "500":{
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{customerId}": {
+      "put": {
+        "tags": ["Customer"],
+        "summary": "updates customer's account details",
+        "description": "",
+        "operationId": "updateCustomerAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "customerId",
+            "description": "ID of customer to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "New customer data to update",
+            "required": false,
+            "type": "object",
+            "$ref": "/#definitions/UpdateCustomerDetails"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Customer"],
+        "summary": "Deletes customer's details",
+        "description": "",
+        "operationId": "deleteCustomerAccount",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "customerId",
+            "description": "ID of customer to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Customer": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email", "phoneNumber", "password"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "This is the auto-generated customer's identification string",
+          "uinqueItems": true,
+          "example": "2da19e46ffca17dc3b9de80"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "This is the customer's first name",
+          "example": "Paul"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "This is the customer's last name",
+          "example": "Sanga"
+        },
+        "email": {
+          "type": "string",
+          "description": "This is the customer's email address",
+          "uinqueItems": true,
+          "example": "paulvasgit99@gmail.com"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "This is the customer's phone number",
+          "uinqueItems": true,
+          "example": "254757255894"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the customer's passkey that will be used in the authentication process",
+          "example": "abc1234"
+        }
+      }
+    },
+    "UpdateCustomerDetails": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email", "phoneNumber", "password"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "This is the auto-generated customer's identification string",
+          "uinqueItems": true,
+          "example": "2da19e46ffca17dc3b9de80"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "This is the customer's first name",
+          "example": "Phantom"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "This is the customer's last name",
+          "example": "Vasploit"
+        },
+        "email": {
+          "type": "string",
+          "description": "This is the customer's email address",
+          "uinqueItems": true,
+          "example": "phantom@gmail.com"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "This is the customer's phone number",
+          "uinqueItems": true,
+          "example": "254114552260"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the customer's passkey that will be used in the authentication process",
+          "example": "abc1234"
+        }
+      }
+    },
+    "CustomerLoginCredentials": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "This is the customer's email address",
+          "uniqueItems": true,
+          "example": "paulvasgit99@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the administrator's passkey that would be used during authentication process",
+          "example": "abc1234"
+        }
+      }
+    }
+  }
+}

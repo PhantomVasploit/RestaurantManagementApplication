@@ -9,7 +9,7 @@ const exchangeName = 'customer';
 
 module.exports.register = (req, res)=>{
   const { firstName, lastName, email, phoneNumber, password } = req.body;
-  Admin.create({ firstName, lastName, email, phoneNumber, password })
+  Customer.create({ firstName, lastName, email, phoneNumber, password })
   .then((customer)=>{
     const jwt = createToken(_.pick(customer, ['_id', 'permissions']));
     producer(exchangeName, 'create', JSON.stringify(customer));

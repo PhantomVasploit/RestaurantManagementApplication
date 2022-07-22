@@ -16,18 +16,18 @@ describe('/api/customer/login', ()=>{
     await Customer.deleteMany({});
   });
 
-  it('Should return authenticated user details', async()=>{
+  it('Should return authenticated customer details', async()=>{
     const response = await request(server)
     .post('/api/customer/login')
     .send({email: 'paulvasgit99@gmail.com', password: 'pajoy9903'})
-    .expect(200)
+    .expect(200);
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Login successful');
     expect(response.body.customer.firstName).toBe('Paul');
     expect(response.body.customer.lastName).toBe('Sanga');
-    expect(response.body.customer.email.toBe('paulvasgit99@gmail.com'));
+    expect(response.body.customer.email).toBe('paulvasgit99@gmail.com');
     expect(response.body.customer.phoneNumber).toBe('254757255894');
-  });
+  })
 
   it('Should return a 400 response status and an invalid message when provided an invalid email', async()=>{
     const response = await request(server)

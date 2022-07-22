@@ -18,6 +18,7 @@ const {errorLogging} = require('./middleware/errorLogging');
 require('./config/db.config');
 const routes = require('./routes/routes');
 const logger = require('./config/winston.config');
+const swaggerDoc = require('../swagger.json');
 
 app.use(cors());
 app.use(helmet());
@@ -25,6 +26,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/customer', routes);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(errorLogging);
 
 
