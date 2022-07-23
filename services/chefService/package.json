@@ -4,7 +4,9 @@
   "description": "This is the chef API service for the Restaurant Management Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --verbose --detectOpenHandles",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "author": "Paul Sanga",
   "license": "ISC",

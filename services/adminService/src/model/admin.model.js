@@ -24,20 +24,9 @@ const adminSchema = new Schema({
       required: [true, 'password field is required']
     },
     permissions: {
-      create: {
+      isAdmin: {
         type: Boolean,
-        default: true
-      },
-      read: {
-        type: Boolean,
-        default: true
-      },
-      update: {
-        type: Boolean,
-        default: true
-      },
-      delete: {
-        type: Boolean,
+        required: [true, 'permissions field is required'],
         default: true
       }
     }
