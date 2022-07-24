@@ -1,0 +1,270 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "descritpion": "This is the chef's authentication and authorization API service for the Restaurant Management System",
+    "version": "1.0.0",
+    "title": "Restaurant Management System Chef authentication and authorization API",
+    "contact": {
+      "name": "Paul Sanga",
+      "email": "paulvasgit99@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "127.0.0.1:5001",
+  "basePath": "/api/chef",
+  "tags": [
+    {
+      "name": "Chef",
+      "descritpion": "The end target user of the Restaurant Management System"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/register": {
+      "post":{
+        "tags": ["Chef"],
+        "summary": "Creates a new chef account",
+        "description": "Accepts chef's details provided through a form and creates a new chef account",
+        "operationId": "newChefAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Chef object that needs to be saved to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Chef"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Chef"],
+        "summary": "Logs the Chef into the system",
+        "operationId": "loginChef",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Chef login credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChefLoginCredentials"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid login credentials"
+          },
+          "500":{
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{chefId}": {
+      "put": {
+        "tags": ["Chef"],
+        "summary": "updates chef's account details",
+        "description": "",
+        "operationId": "updateChefAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "chefId",
+            "description": "ID of chef to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "New chef data to update",
+            "required": false,
+            "type": "object",
+            "$ref": "/#definitions/UpdateChefDetails"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Chef"],
+        "summary": "Deletes chef's details",
+        "description": "",
+        "operationId": "deleteChefAccount",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "chefId",
+            "description": "ID of chef to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Chef": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email", "password"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "This is the auto-generated chef's identification string",
+          "uinqueItems": true,
+          "example": "2da19e46ffca17dc3b9de80"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "This is the chef's first name",
+          "example": "Paul"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "This is the chef's last name",
+          "example": "Sanga"
+        },
+        "email": {
+          "type": "string",
+          "description": "This is the chef's email address",
+          "uinqueItems": true,
+          "example": "paulvasgit99@gmail.com"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "This is the chef's phone number",
+          "uinqueItems": true,
+          "example": "254757255894"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the chef's passkey that will be used in the authentication process",
+          "example": "abc1234"
+        }
+      }
+    },
+    "UpdateChefDetails": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email", "password"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "This is the auto-generated chef's identification string",
+          "uinqueItems": true,
+          "example": "2da19e46ffca17dc3b9de80"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "This is the chef's first name",
+          "example": "Phantom"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "This is the chef's last name",
+          "example": "Vasploit"
+        },
+        "email": {
+          "type": "string",
+          "description": "This is the chef's email address",
+          "uinqueItems": true,
+          "example": "phantom@gmail.com"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "This is the chef's phone number",
+          "uinqueItems": true,
+          "example": "254114552260"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the chef's passkey that will be used in the authentication process",
+          "example": "abc1234"
+        }
+      }
+    },
+    "ChefLoginCredentials": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "This is the chef's email address",
+          "uniqueItems": true,
+          "example": "paulvasgit99@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "This is the chef's passkey that would be used during authentication process",
+          "example": "abc1234"
+        }
+      }
+    }
+  }
+}

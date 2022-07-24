@@ -261,7 +261,7 @@
         },
         "password": {
           "type": "string",
-          "description": "This is the administrator's passkey that would be used during authentication process",
+          "description": "This is the customer's passkey that would be used during authentication process",
           "example": "abc1234"
         }
       }

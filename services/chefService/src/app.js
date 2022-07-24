@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const winston = require('winston');
-const swaggerUi = require('swagger-ui-express');
+const swaggerUI = require('swagger-ui-express');
 require('dotenv').config();
 
 const app = express();
@@ -13,6 +13,7 @@ require('./config/db.config');
 const logger = require('./config/winston.config');
 const {errorLogging} = require('./middleware/errorLogging');
 const routes = require('./routes/routes');
+const swaggerDoc = require('../swagger.json');
 
 winston.exceptions.handle(new winston.transports.File({filename: 'Exceptions.log'}));
 process.on('unhandledRejection', (ex)=>{
@@ -25,6 +26,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/chef', routes);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(errorLogging);
 
 const server = app.listen(port, ()=>{
