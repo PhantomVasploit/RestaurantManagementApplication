@@ -15,7 +15,7 @@ describe('POST: /api/menu/main-course', ()=>{
     await MainCourse.deleteMany({});
   });
 
-  it('Should create a new main course food item to the database', async()=>{
+  it('Should seed the database with main course meal menu items', async()=>{
     const response = await request(server)
     .post('/api/menu/main-course')
     .expect(201);

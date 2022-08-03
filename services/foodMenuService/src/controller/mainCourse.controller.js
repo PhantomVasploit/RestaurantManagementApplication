@@ -26,7 +26,7 @@ module.exports.createMainCourseMenu = (req, res)=>{
 module.exports.getMainCourseMenu = (req, res)=>{
   MainCourse.find({})
   .then((mainCourseMeals)=>{
-    res.status(200).json({message: 'Fetch successful', mainCourseMeals })
+    res.status(200).json({message: 'Fetch successful', mainCourseMeals})
   })
   .catch((e)=>{
     throw e;

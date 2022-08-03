@@ -31,7 +31,7 @@ describe('GET: /api/menu/apperitif', ()=>{
     await Apperitif.deleteMany({});
   });
 
-  it('Should return all an array of all apperitif drinks', async ()=>{
+  it('Should return apperitif menu items', async ()=>{
     const response = await request(server)
     .get('/api/menu/apperitif')
     .expect(200);

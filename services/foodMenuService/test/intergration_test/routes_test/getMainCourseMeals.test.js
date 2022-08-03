@@ -23,7 +23,7 @@ describe('GET: /api/menu/main-course', ()=>{
     await MainCourse.deleteMany({});
   });
 
-  it('Should return an array of all main course meals', async()=>{
+  it('Should return main course meals menu items', async()=>{
     const response = await request(server)
     .get('/api/menu/main-course')
     .expect(200)
