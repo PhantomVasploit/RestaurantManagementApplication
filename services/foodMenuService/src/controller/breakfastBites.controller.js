@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const BreakfastBite = require('../models/breakfastBites.model');
 const logger = require('../config/winston.config');
 
@@ -29,4 +31,30 @@ module.exports.getBreakfastBites = (req, res)=>{
   .catch((e)=>{
     throw e;
   })
+}
+
+
+module.exports.updateBreakfastBitesMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const breakfastBiteId = toId(req.params.breakfastBiteId);
+  const { price } = req.body;
+  BreakfastBite.findOneAndUpdate({_id: breakfastBiteId}, { price })
+  .then(()=>{
+    res.status(200).json({message: 'Update successful'});
+  })
+  .catch((e)=>{
+    throw e;
+  });
+}
+
+module.exports.deleteBreakfastBitesMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const breakfastBiteId = toId(req.params.breakfastBiteId);
+  BreakfastBite.findOneAndRemove({_id: breakfastBiteId})
+  .then((breakfastBite)=>{
+    res.status(200).json({message: 'Delete successful', breakfastBite});
+  })
+  .catch((e)=>{
+    throw e;
+  });
 }

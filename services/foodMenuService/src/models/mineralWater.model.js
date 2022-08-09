@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const beerSchema = new Schema({
+const mineralWaterSchema = new Schema({
   name:{
     type: String,
     required: [true, "name field is required"],
@@ -15,13 +15,8 @@ const beerSchema = new Schema({
   storeItem: {
     type: Array,
     required: [true, "store item field is required"]
-  },
-  imgUrl: {
-    type: String,
-    trim: true,
-    required: [true, "image Url field is required"]
   }
 });
 
-const Beer = mongoose.model('Beer', beerSchema);
-module.exports = Beer;
+const MineralWater = mongoose.model('MineralWater', mineralWaterSchema);
+module.exports = MineralWater;

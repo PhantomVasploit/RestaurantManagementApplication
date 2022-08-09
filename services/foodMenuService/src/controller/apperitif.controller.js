@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const Apperitif = require('../models/apperitif.model');
 const logger = require("../config/winston.config");
 
@@ -23,14 +25,39 @@ module.exports.createApperitifMenu = (req, res)=>{
     .catch((e)=>{
       throw e;
     });
-    res.status(201).json({message: 'Apperitif drinks successfully added to the database'})
-  })
+  });
+  res.status(201).json({message: 'Database successfully seeded'})
 }
 
 module.exports.getApperitifMenu = (req, res)=>{
   Apperitif.find({})
   .then((apperitifDrinks)=>{
     res.status(200).json({message: 'Fetch successful', apperitifDrinks})
+  })
+  .catch((e)=>{
+    throw e;
+  })
+}
+
+module.exports.updateApperitifMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const apperitifId = toId(req.params.apperitifId);
+  const { price } = req.body;
+  Apperitif.findOneAndUpdate({_id: apperitifId}, { price })
+  .then(()=>{
+    res.status(200).json({message: 'Update successful'});
+  })
+  .catch((e)=>{
+    throw e;
+  });
+}
+
+module.exports.deleteApperitifMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const apperitifId = toId(req.params.apperitifId);
+  Apperitif.findOneAndRemove({_id: apperitifId})
+  .then((apperitif)=>{
+    res.status(200).json({message: 'Delete successful', apperitif});
   })
   .catch((e)=>{
     throw e;

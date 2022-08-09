@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const Beer = require("../models/beer.model");
 const logger = require("../config/winston.config");
 
@@ -31,4 +33,29 @@ module.exports.getBeerMenu = (req, res)=>{
   .catch((e)=>{
     throw e;
   });
+}
+
+module.exports.updateBeerMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const beerId = toId(req.params.beerId);
+  const { price } = req.body;
+  Beer.findOneAndUpdate({_id: beerId}, { price })
+  .then(()=>{
+    res.status(200).json({message: 'Upadte successful'});
+  })
+  .catch((e)=>{
+    throw e;
+  });
+}
+
+module.exports.deleteBeerMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const beerId = toId(req.params.beerId);
+  Beer.findOneAndRemove({_id: beerId})
+  .then((beer)=>{
+    res.status(200).json({message: 'Delete successful', beer});
+  })
+  .catch((e)=>{
+    throw e;
+  })
 }

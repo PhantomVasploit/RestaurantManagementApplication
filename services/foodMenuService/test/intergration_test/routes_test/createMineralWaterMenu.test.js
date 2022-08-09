@@ -1,26 +1,26 @@
 const request = require('supertest');
 
-const Apperitif = require('../../../src/models/apperitif.model');
+const MineralWater = require('../../../src/models/mineralWater.model');
 let server;
 
-describe('POST: /api/menu/apperitif', ()=>{
+describe('POST: /api/menu/mineral-water', ()=>{
 
   beforeEach(async()=>{
     server = require('../../../src/app');
-    await Apperitif.deleteMany({});
+    await MineralWater.deleteMany({});
   });
 
   afterEach(async()=>{
     await server.close();
-    await Apperitif.deleteMany({});
+    await MineralWater.deleteMany({});
   });
 
-  it('Should seed the database apperitif menu items', async()=>{
+  it('Should seed the database with mineral water menu items', async()=>{
     const response = await request(server)
-    .post('/api/menu/apperitif')
+    .post('/api/menu/mineral-water')
     .expect(201)
     expect(response.status).toBe(201);
     expect(response.body.message).toBe('Database successfully seeded');
   });
 
-});
+})

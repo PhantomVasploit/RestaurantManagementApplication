@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const beerSchema = new Schema({
+const ginSchema = new Schema({
   name:{
     type: String,
     required: [true, "name field is required"],
@@ -23,5 +23,5 @@ const beerSchema = new Schema({
   }
 });
 
-const Beer = mongoose.model('Beer', beerSchema);
-module.exports = Beer;
+const Gin = mongoose.model('Gin', ginSchema);
+module.exports = Gin;

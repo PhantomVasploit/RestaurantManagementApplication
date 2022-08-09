@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const mongoose = require('mongoose');
 
 const MainCourse = require('../models/mainCourse.model');
 const logger = require('../config/winston.config');
@@ -19,14 +19,39 @@ module.exports.createMainCourseMenu = (req, res)=>{
         res.status(400).json({message: `Failed creating food menu item: ${e.message}`});
         throw e;
       });
-      res.status(201).json({message: `Item added to the database successfully`});
     });
+    res.status(201).json({message: `Item added to the database successfully`});
 }
 
 module.exports.getMainCourseMenu = (req, res)=>{
   MainCourse.find({})
   .then((mainCourseMeals)=>{
     res.status(200).json({message: 'Fetch successful', mainCourseMeals})
+  })
+  .catch((e)=>{
+    throw e;
+  });
+}
+
+module.exports.updateMainCourseMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const mainCourseId = toId(req.params.mainCourseId);
+  const { price } = req.body;
+  MainCourse.findOneAndUpdate({_id: mainCourseId}, { price })
+  .then(()=>{
+    res.status(200).json({message: 'Update successful'});
+  })
+  .catch((e)=>{
+    throw e;
+  });
+}
+
+module.exports.deleteMainCourseMenu = (req, res)=>{
+  const toId = mongoose.Types.ObjectId;
+  const mainCourseId = toId(req.params.mainCourseId);
+  MainCourse.findOneAndRemove({_id: mainCourseId})
+  .then((mainCourse)=>{
+    res.status(200).json({message: 'Delete successful', mainCourse});
   })
   .catch((e)=>{
     throw e;

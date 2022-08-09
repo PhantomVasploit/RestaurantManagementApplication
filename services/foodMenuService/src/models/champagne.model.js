@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const beerSchema = new Schema({
+const champagneSchema = new Schema({
   name:{
     type: String,
     required: [true, "name field is required"],
     trim: true,
     unique: [true, "name field should be unique"]
   },
-  price: {
+  priceByBottle: {
+    type: Number,
+    required: [true, "price field is required"]
+  },
+  priceByGlass: {
     type: Number,
     required: [true, "price field is required"]
   },
@@ -23,5 +27,5 @@ const beerSchema = new Schema({
   }
 });
 
-const Beer = mongoose.model('Beer', beerSchema);
-module.exports = Beer;
+const Champagne = mongoose.model('Champagne', champagneSchema);
+module.exports = Champagne;

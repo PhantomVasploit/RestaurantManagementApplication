@@ -18,7 +18,7 @@ const apperitifSchema = new Schema({
   },
   imgUrl: {
     type: String,
-    time: true,
+    trim: true,
     required: [true, "image Url field is required"]
   }
 });
