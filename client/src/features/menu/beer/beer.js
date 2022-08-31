@@ -9,7 +9,7 @@ export const fetchBeer = createAsyncThunk('menu/fetchBeer', ()=>{
 
 const slice = createSlice({
   name: 'beer',
-  intialState: {
+  initialState: {
     loading: false,
     beer: [],
     error: ''

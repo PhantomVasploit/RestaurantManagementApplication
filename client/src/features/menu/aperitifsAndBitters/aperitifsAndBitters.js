@@ -9,7 +9,7 @@ export const fetchAperitifsAndBitters = createAsyncThunk('menu/aperitifsAndBitte
 
 const slice = createSlice({
   name: 'apperitifAndBitters',
-  intialState: {
+  initialState: {
     loading: false,
     apperitifAndBitters: [],
     error: ''

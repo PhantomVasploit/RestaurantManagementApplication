@@ -9,7 +9,7 @@ export const fetchHotBeverage = createAsyncThunk('menu/fetchHotBeverage', ()=>{
 
 const slice = createSlice({
   name: 'hotBeverage',
-  intialState: {
+  initialState: {
     loading: false,
     hotBeverage: [],
     error: ''

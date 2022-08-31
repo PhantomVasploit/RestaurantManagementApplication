@@ -9,7 +9,7 @@ export const fetchBourbonAndTennessee = createAsyncThunk('menu/fetchBourbonAndTe
 
 const slice = createSlice({
   name: 'bourbonAndTennessee',
-  intialState: {
+  initialState: {
     loading: false,
     bourbonAndTennessee: [],
     error: ''
@@ -23,7 +23,7 @@ const slice = createSlice({
     builder.addCase(fetchBourbonAndTennessee.fulfilled, (state, action)=>{
       state.loading = false;
       state.bourbonAndTennessee = action.payload;
-      state.error: '';
+      state.error = '';
     });
     builder.addCase(fetchBourbonAndTennessee.rejected, (state, action)=>{
       state.loading = false;

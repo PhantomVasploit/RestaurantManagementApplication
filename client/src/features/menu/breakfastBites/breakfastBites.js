@@ -9,7 +9,7 @@ export const fetchBreakfastBites = createAsyncThunk('menu/fetchBreakfastBites', 
 
 const slice = createSlice({
   name: 'breakfastBites',
-  intialState: {
+  initialState: {
     loading: false,
     breakfastBites: [],
     error: ''
@@ -28,7 +28,7 @@ const slice = createSlice({
     builder.addCase(fetchBreakfastBites.rejected, (state, action)=>{
       state.loading = false;
       state.breakfastBites = [];
-      state.error = action .error.message;
+      state.error = action.error.message;
     })
   }
 });

@@ -9,7 +9,7 @@ export const fetchMainCourseMeals = createAsyncThunk('menu/fetchMainCourseMeals'
 
 const slice = createSlice({
   name: 'mainCourse',
-  intialState: {
+  initialState: {
     loading: false,
     mainCourseMeals: [],
     error: ''
