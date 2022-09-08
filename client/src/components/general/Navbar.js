@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = ()=>{
   return(
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
      <div className="container">
        <NavLink className="navbar-brand logoText fw-bold" to="/">
          COOX'S RESTAURANT
