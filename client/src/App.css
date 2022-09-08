@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+
 .landingPage{
   min-height: 100vh;
   background-image: url('./assets/background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.formContainer{
+  min-height: 100vh;
+}
+
+.formSideImage{
+  background-image: url('./assets/formPic.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.formSideText{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  color: white;
+}
+
+.btn{
+  background-color: #de6622;
+  color: white;
 }

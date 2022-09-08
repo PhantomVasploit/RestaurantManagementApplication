@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import userReducer from '../features/user/user';
+import adminReducer from '../features/admin/admin';
 import hotBeverageReducer from '../features/menu/hotBeverage/hotBeverage';
 import mainCourseMealsReducer from '../features/menu/mainCourse/mainCourse';
 import aperitifsAndBittersReducer from '../features/menu/aperitifsAndBitters/aperitifsAndBitters';
@@ -10,7 +10,7 @@ import breakfastBitesReducer from '../features/menu/breakfastBites/breakfastBite
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
+    admin: adminReducer,
     hotBeverage: hotBeverageReducer,
     mainCourseMeals: mainCourseMealsReducer,
     aperitifsAndBitters: aperitifsAndBittersReducer,
