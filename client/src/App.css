@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Poppins:ital,wght@1,100&display=swap');
 
 .landingPage{
   min-height: 100vh;
-  background-image: url('./assets/background.jpg');
+  background-color: #0e0e10;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  overflow: hidden;
 }
 
 .formContainer{
@@ -22,6 +24,25 @@
 .formSideText{
   font-family: 'Oleo Script Swash Caps', cursive;
   color: white;
+}
+
+.hero{
+  min-height: 100vh;
+}
+
+.heroHeadingText{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  color: white; 
+}
+
+.heroText{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.heroImage{
+  height: 80vh;
 }
 
 .btn{
