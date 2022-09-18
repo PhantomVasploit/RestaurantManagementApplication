@@ -7,17 +7,22 @@ const { createToken } = require('../utils/json.token');
 const { producer } = require('../config/producer.config');
 const exchangeName = 'customer';
 
-module.exports.register = (req, res)=>{
-  const { firstName, lastName, email, phoneNumber, password } = req.body;
-  Customer.create({ firstName, lastName, email, phoneNumber, password })
-  .then((customer)=>{
-    const jwt = createToken(_.pick(customer, ['_id', 'permissions']));
-    producer(exchangeName, 'create', JSON.stringify(customer));
-    res.status(201).json({message: 'Customer account created successfully', jwt, customer: _.pick(customer, ['_id', 'firstName', 'lastName', 'email', 'phoneNumber'])});
-  })
-  .catch((e)=>{
-    throw e;
-  })
+module.exports.register = async (req, res)=>{
+  const { firstName, lastName, email, phoneNumber, password } = req.body.body;
+  const registeredCustomer = await Customer.findOne({email})
+  if(!registeredCustomer){
+    Customer.create({ firstName, lastName, email, phoneNumber, password })
+      .then((customer)=>{
+        const jwt = createToken(_.pick(customer, ['_id', 'permissions']));
+        producer(exchangeName, 'create', JSON.stringify(customer));
+        res.status(201).json({message: 'Customer account created successfully', jwt, customer: _.pick(customer, ['_id', 'firstName', 'lastName', 'email', 'phoneNumber'])});
+      })
+      .catch((e)=>{
+        throw e;
+      })
+  }else{
+    res.status(400).json({message: 'This email is registred'});
+  }
 }
 
 module.exports.login = async(req, res)=>{

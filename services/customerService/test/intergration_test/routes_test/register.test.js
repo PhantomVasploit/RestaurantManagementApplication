@@ -8,6 +8,8 @@ describe('/api/customer/register', ()=>{
   beforeEach(async()=>{
     server = require('../../../src/app');
     await Customer.deleteMany({});
+    const customer = new Customer({firstName: 'Phantom', lastName: 'Vasploit', email: 'phantom@gmail.com', password: 'pajoy9903', phoneNumber: '+254114552260'});
+    await customer.save();
   });
 
   afterEach(async()=>{
@@ -15,7 +17,7 @@ describe('/api/customer/register', ()=>{
     await Customer.deleteMany({});
   });
 
-  it('Should create a new customer account', async()=>{
+  it('Should create a new customer account with an unregistered email address', async()=>{
     const response = await request(server)
     .post('/api/customer/register')
     .send({firstName: 'Paul', lastName: 'Sanga', email: 'paulvasgit99@gmail.com', password: 'pajoy9903', phoneNumber: '254757255894'})
@@ -26,6 +28,15 @@ describe('/api/customer/register', ()=>{
     expect(response.body.customer.lastName).toBe('Sanga');
     expect(response.body.customer.email).toBe('paulvasgit99@gmail.com');
     expect(response.body.customer.phoneNumber).toBe('254757255894');
+  });
+
+  it('Should return a status code of 400 and a message for an already registred email address', async()=>{
+    const response = await request(server)
+    .post('/api/customer/register')
+    .send({firstName: 'Phantom', lastName: 'Vasploit', email: 'phantom@gmail.com', password: 'pajoy9903', phoneNumber: '+254114552260'})
+    .expect(400)
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe('This email is registred');
   });
 
 })
