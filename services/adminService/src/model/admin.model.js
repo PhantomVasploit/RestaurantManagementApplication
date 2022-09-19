@@ -19,6 +19,12 @@ const adminSchema = new Schema({
         trim: true,
         unique: [true, 'email field must be unique']
     },
+    phoneNumber: {
+      type: String,
+      trim: true,
+      required: [true, 'phoneNumber field is required'],
+      unique: [true, 'phoneNumber field must be unique']
+    },
     password: {
       type: String,
       required: [true, 'password field is required']

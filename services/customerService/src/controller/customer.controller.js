@@ -21,13 +21,13 @@ module.exports.register = async (req, res)=>{
         throw e;
       })
   }else{
-    res.status(400).json({message: 'This email is registred'});
+    res.status(400).json({message: 'The email is registred'});
   }
 }
 
 module.exports.login = async(req, res)=>{
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.body.body;
     const customer = await Customer.findOne({email});
     if(!customer){
       res.status(400).json({message: 'Invalid login credentials'});

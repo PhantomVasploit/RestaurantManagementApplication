@@ -33,8 +33,8 @@ const customerSchema = new Schema({
   permissions: {
     isAdmin: {
       type: Boolean,
-      required: [true, "is admin permissions field must be provided"],
-      default: true
+      required: [false, "is admin permissions field must be provided"],
+      default: false
     }
   }
 });

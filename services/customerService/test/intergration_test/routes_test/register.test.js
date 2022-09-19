@@ -36,7 +36,7 @@ describe('/api/customer/register', ()=>{
     .send({firstName: 'Phantom', lastName: 'Vasploit', email: 'phantom@gmail.com', password: 'pajoy9903', phoneNumber: '+254114552260'})
     .expect(400)
     expect(response.status).toBe(400);
-    expect(response.body.message).toBe('This email is registred');
+    expect(response.body.message).toBe('The email is registred');
   });
 
 })

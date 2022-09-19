@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik ,Form } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../general/InputField";
 import { login } from "../../features/customer/customer";
+import { loadMessage, clearMessage } from "../../features/errorMessage/errorMessage";
 
 const CustomerLogin = ()=>{
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [errorMessage, setErrorMessage] = useState('')
+    const errorMessage = useSelector( (state)=>state.errorMessage.errorMessage )
+
     const validate = Yup.object({
         password: Yup.string()
         .min(8, "Password should at least be 8 characters long")
@@ -40,7 +42,7 @@ const CustomerLogin = ()=>{
                                         email: ""
                                     }}
                                     validationSchema = {validate}
-                                    onSubmit = {async(values)=>{
+                                    onSubmit = {(values)=>{
                                         const requestOptions = {
                                             headers: {
                                                 "Acess-Controll-Allow-Origin": "*",
@@ -49,14 +51,14 @@ const CustomerLogin = ()=>{
                                             },
                                             body: values
                                         }
-                                        const response = await axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
-                                        if(response.data.message === 'Invalid Login Credentials'){
-                                            setErrorMessage(response.data.message)
-                                            console.log(response.status)
-                                        }else{
+                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                        .then((response)=>{
                                             dispatch(login(response))
                                             navigate('/')
-                                        }
+                                        })
+                                        .catch((error)=>{
+                                            dispatch(loadMessage(error.response))
+                                        })
                                     }}
                                     >
                                         {
@@ -90,8 +92,6 @@ const CustomerLogin = ()=>{
                                     <h1 className="display-3 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
                                 </div>
 
-                                <p className="text-danger text-lead">{errorMessage}</p>
-
                                 <div className="col ms-5 me-5 mt-5">
                                     <Formik 
                                     initialValues={{
@@ -99,7 +99,7 @@ const CustomerLogin = ()=>{
                                         email: ""
                                     }}
                                     validationSchema = {validate}
-                                    onSubmit = {async(values)=>{
+                                    onSubmit = { (values)=>{
                                         const requestOptions = {
                                             headers: {
                                                 "Acess-Controll-Allow-Origin": "*",
@@ -108,14 +108,15 @@ const CustomerLogin = ()=>{
                                             },
                                             body: values
                                         }
-                                        const response = await axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
-                                        if(response.data.message === 'Invalid Login Credentials'){
-                                            setErrorMessage(response.data.message)
-                                            console.log(errorMessage)
-                                        }else{
+                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                        .then((response)=>{
                                             dispatch(login(response))
+                                            dispatch(clearMessage())
                                             navigate('/')
-                                        }
+                                        })
+                                        .catch((error)=>{
+                                            dispatch(loadMessage(error.response))
+                                        })
                                     }}
                                     >
                                         {
@@ -123,6 +124,7 @@ const CustomerLogin = ()=>{
                                                 <Form>
                                                     <fieldset className="form-group">
                                                         <legend className="border-bottom mb-4 text-center mt-4">Sign In</legend>
+                                                        <p className="text-danger text-lead">{errorMessage}</p>
                                                         <InputField label="Email" name="email" type="text" />
                                                         <InputField label="Password" name="password" type="password" />
                                                     </fieldset>

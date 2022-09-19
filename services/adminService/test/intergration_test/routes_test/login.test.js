@@ -7,7 +7,7 @@ describe('/api/admin/login', ()=>{
 
   beforeEach(async()=>{
     server = require('../../../src/app');
-    const admin = new Admin({ firstName: 'Paul', lastName: 'Sanga', email: 'paulvasgit99@gmail.com', password: 'pajoy9903' });
+    const admin = new Admin({ firstName: 'Paul', lastName: 'Sanga', email: 'paulvasgit99@gmail.com', password: 'pajoy9903', phoneNumber: '+254757255894' });
     await admin.save();
   });
 

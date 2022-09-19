@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import adminReducer from '../features/admin/admin';
 import customerReducer from '../features/customer/customer';
 import chefReducer from '../features/chef/chef';
+import errorMessageReducer from '../features/errorMessage/errorMessage';
 import hotBeverageReducer from '../features/menu/hotBeverage/hotBeverage';
 import mainCourseMealsReducer from '../features/menu/mainCourse/mainCourse';
 import aperitifsAndBittersReducer from '../features/menu/aperitifsAndBitters/aperitifsAndBitters';
@@ -15,6 +16,7 @@ export const store = configureStore({
     admin: adminReducer,
     customer: customerReducer,
     chef: chefReducer,
+    errorMessage: errorMessageReducer,
     hotBeverage: hotBeverageReducer,
     mainCourseMeals: mainCourseMealsReducer,
     aperitifsAndBitters: aperitifsAndBittersReducer,

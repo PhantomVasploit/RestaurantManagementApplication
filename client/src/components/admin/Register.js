@@ -7,10 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import InputField from "../general/InputField";
-import { login } from "../../features/customer/customer";
+import { login } from "../../features/admin/admin";
 import { loadMessage, clearMessage } from "../../features/errorMessage/errorMessage";
 
-const CustomerRegister = ()=>{
+const AdminRegister = ()=>{
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -66,7 +66,7 @@ const CustomerRegister = ()=>{
                                         },
                                         body: values
                                     }
-                                    axios.post('http://127.0.0.1:5001/api/customer/register', requestOptions)
+                                    axios.post('http://127.0.0.1:5000/api/admin/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
                                         navigate('/')
@@ -125,7 +125,7 @@ const CustomerRegister = ()=>{
                                         },
                                         body: values
                                     }
-                                    axios.post('http://127.0.0.1:5001/api/customer/register', requestOptions)
+                                    axios.post('http://127.0.0.1:5000/api/admin/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
                                         dispatch(clearMessage())
@@ -162,4 +162,4 @@ const CustomerRegister = ()=>{
     )
 }
 
-export default CustomerRegister;
+export default AdminRegister;

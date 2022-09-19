@@ -6,14 +6,16 @@ const slice = createSlice({
     firstName: '',
     lastName: '',
     email: '',
+    phoneNumber: '',
     authenticationToken: ''
   },
   reducers: {
     login: (state, action)=>{
-      state.firstName = action.payload.firstName
-      state.lastName = action.payload.lastName
-      state.email = action.payload.email
-      state.authenticationToken = action.payload.jwt
+      state.firstName = action.payload.data.admin.firstName
+      state.lastName = action.payload.data.admin.lastName
+      state.email = action.payload.data.admin.email
+      state.phoneNumber = action.payload.data.admin.phoneNumber
+      state.authenticationToken = action.payload.data.jwt
     },
 
     logout: (state, action)=>{
