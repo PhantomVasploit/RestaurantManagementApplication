@@ -21,7 +21,7 @@ module.exports.register = async (req, res)=>{
         throw e;
       })
   }else{
-    res.status(400).json({message: 'The email is registred'});
+    res.status(400).json({message: 'The email is registered'});
   }
 }
 

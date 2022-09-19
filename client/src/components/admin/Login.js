@@ -3,7 +3,7 @@ import { Formik ,Form } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import InputField from "../general/InputField";
 import { login } from "../../features/admin/admin";
@@ -77,7 +77,7 @@ const AdminLogin = ()=>{
                                         }
 
                                     </Formik>
-                                    <p className="lead text-end mt-3">Don't have an account? SignUp</p>
+                                    <Link to='/admin/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
                                 </div>
 
                             </div>
@@ -136,7 +136,7 @@ const AdminLogin = ()=>{
                                         }
 
                                     </Formik>
-                                    <p className="lead text-end mt-3">Don't have an account? SignUp</p>
+                                    <Link to='/admin/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
                                 </div>
 
                             </div>

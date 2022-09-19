@@ -3,13 +3,13 @@ import { Formik ,Form } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import InputField from "../general/InputField";
-import { login } from "../../features/customer/customer";
+import { login } from "../../features/chef/chef";
 import { loadMessage, clearMessage } from "../../features/errorMessage/errorMessage";
 
-const CustomerLogin = ()=>{
+const ChefLogin = ()=>{
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const errorMessage = useSelector( (state)=>state.errorMessage.errorMessage )
@@ -51,7 +51,7 @@ const CustomerLogin = ()=>{
                                             },
                                             body: values
                                         }
-                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                        axios.post('http://127.0.0.1:5002/api/chef/login', requestOptions)
                                         .then((response)=>{
                                             dispatch(login(response))
                                             navigate('/')
@@ -77,7 +77,7 @@ const CustomerLogin = ()=>{
                                         }
 
                                     </Formik>
-                                    <Link to='/customer/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
+                                    <Link to='/chef/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
                                 </div>
 
                             </div>
@@ -108,7 +108,7 @@ const CustomerLogin = ()=>{
                                             },
                                             body: values
                                         }
-                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                        axios.post('http://127.0.0.1:5002/api/chef/login', requestOptions)
                                         .then((response)=>{
                                             dispatch(login(response))
                                             dispatch(clearMessage())
@@ -136,7 +136,7 @@ const CustomerLogin = ()=>{
                                         }
 
                                     </Formik>
-                                    <Link to='/customer/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
+                                    <Link to='/chef/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
                                 </div>
 
                             </div>
@@ -147,4 +147,4 @@ const CustomerLogin = ()=>{
     );
 }
 
-export default CustomerLogin;
+export default ChefLogin;

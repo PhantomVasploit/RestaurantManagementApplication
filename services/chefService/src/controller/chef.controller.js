@@ -7,22 +7,27 @@ const { createToken } = require('../utils/json.token');
 const { producer } = require('../config/producer.config');
 const exchangeName = 'chef';
 
-module.exports.register = (req, res)=>{
-  const { firstName, lastName, email, password } = req.body;
-  Chef.create({ firstName, lastName, email, password })
-  .then((chef)=>{
-    const jwt = createToken(_.pick(chef, ['_id', 'permissions']));
-    producer(exchangeName, 'create', JSON.stringify(chef));
-    res.status(201).json({message: 'Chef account created successfully', jwt, chef: _.pick(chef, ['_id', 'firstName', 'lastName', 'email'])});
-  })
-  .catch((e)=>{
-    throw e;
-  })
+module.exports.register = async (req, res)=>{
+  const { firstName, lastName, email, phoneNumber, password } = req.body.body;
+  const registeredChef = await Chef.findOne({email})
+  if(!registeredChef){
+    Chef.create({ firstName, lastName, email, phoneNumber, password })
+      .then((chef)=>{
+        const jwt = createToken(_.pick(chef, ['_id', 'permissions']));
+        producer(exchangeName, 'create', JSON.stringify(chef));
+        res.status(201).json({message: 'Chef account created successfully', jwt, chef: _.pick(chef, ['_id', 'firstName', 'lastName', 'email', 'phoneNumber'])});
+      })
+      .catch((e)=>{
+        throw e;
+      })
+  }else{
+    res.status(400).json({message: 'The email is registered'});
+  }
 }
 
 module.exports.login = async (req, res)=>{
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.body.body;
     const chef = await Chef.findOne({email});
     if(!chef){
       res.status(400).json({message: 'Inavlid login credentials'});

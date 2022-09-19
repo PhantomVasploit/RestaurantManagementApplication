@@ -7,10 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 import InputField from "../general/InputField";
-import { login } from "../../features/admin/admin";
+import { login } from "../../features/chef/chef";
 import { loadMessage, clearMessage } from "../../features/errorMessage/errorMessage";
 
-const AdminRegister = ()=>{
+const ChefRegister = ()=>{
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -66,7 +66,7 @@ const AdminRegister = ()=>{
                                         },
                                         body: values
                                     }
-                                    axios.post('http://127.0.0.1:5000/api/admin/register', requestOptions)
+                                    axios.post('http://127.0.0.1:5002/api/chef/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
                                         navigate('/')
@@ -91,7 +91,7 @@ const AdminRegister = ()=>{
                                         </div>
                                     </Form>
                                 </Formik>
-                                <Link to='/admin/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
+                                <Link to='/chef/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>
@@ -126,7 +126,7 @@ const AdminRegister = ()=>{
                                         },
                                         body: values
                                     }
-                                    axios.post('http://127.0.0.1:5000/api/admin/register', requestOptions)
+                                    axios.post('http://127.0.0.1:5002/api/chef/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
                                         dispatch(clearMessage())
@@ -153,7 +153,7 @@ const AdminRegister = ()=>{
                                         </div>
                                     </Form>
                                 </Formik>
-                                <Link to='/admin/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
+                                <Link to='/chef/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>
@@ -164,4 +164,4 @@ const AdminRegister = ()=>{
     )
 }
 
-export default AdminRegister;
+export default ChefRegister;

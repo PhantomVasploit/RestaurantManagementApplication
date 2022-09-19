@@ -10,6 +10,9 @@ import AdminRegister from './components/admin/Register';
 import CustomerRegister from './components/customer/Register';
 import CustomerLogin from './components/customer/Login';
 
+import ChefRegister from './components/chef/Register';
+import ChefLogin from './components/chef/Login';
+
 function App() {
   return (
     <div className="App">
@@ -22,6 +25,9 @@ function App() {
 
           <Route path='/customer/register' element={ <CustomerRegister /> } />
           <Route path='/customer/login' element={ <CustomerLogin /> } />
+
+          <Route path='/chef/register' element={ <ChefRegister /> } />
+          <Route path='/chef/login' element={ <ChefLogin /> } />
         </Routes>
       </Router>
     </div>

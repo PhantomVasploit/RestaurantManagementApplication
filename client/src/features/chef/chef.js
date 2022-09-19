@@ -11,11 +11,11 @@ const slice = createSlice({
     },
     reducers: {
         login: (state, action)=>{
-            state.firstName = action.payload.firstName
-            state.lastName = action.payload.lastName
-            state.email = action.payload.email
-            state.phoneNumber = action.payload.phoneNumber
-            state.authenticationToken = action.payload.jwt
+            state.firstName = action.payload.data.chef.firstName
+            state.lastName = action.payload.data.chef.lastName
+            state.email = action.payload.data.chef.email
+            state.phoneNumber = action.payload.data.chef.phoneNumber
+            state.authenticationToken = action.payload.data.jwt
         },
         logout: (state)=>{
             state.firstName = ''

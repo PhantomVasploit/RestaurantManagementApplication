@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import 'yup-phone';
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import InputField from "../general/InputField";
 import { login } from "../../features/customer/customer";
@@ -91,6 +91,7 @@ const CustomerRegister = ()=>{
                                         </div>
                                     </Form>
                                 </Formik>
+                                <Link to='/customer/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>
@@ -152,6 +153,7 @@ const CustomerRegister = ()=>{
                                         </div>
                                     </Form>
                                 </Formik>
+                                <Link to='/customer/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>

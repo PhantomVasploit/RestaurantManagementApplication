@@ -30,13 +30,13 @@ describe('/api/customer/register', ()=>{
     expect(response.body.customer.phoneNumber).toBe('254757255894');
   });
 
-  it('Should return a status code of 400 and a message for an already registred email address', async()=>{
+  it('Should return a status code of 400 and a message for an already registered email address', async()=>{
     const response = await request(server)
     .post('/api/customer/register')
     .send({firstName: 'Phantom', lastName: 'Vasploit', email: 'phantom@gmail.com', password: 'pajoy9903', phoneNumber: '+254114552260'})
     .expect(400)
     expect(response.status).toBe(400);
-    expect(response.body.message).toBe('The email is registred');
+    expect(response.body.message).toBe('The email is registered');
   });
 
 })
