@@ -69,7 +69,7 @@ const CustomerRegister = ()=>{
                                     axios.post('http://127.0.0.1:5001/api/customer/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
-                                        navigate('/')
+                                        navigate('/customer/home')
                                     })
                                     .catch((error)=>{
                                         dispatch(loadMessage(error.response))
@@ -130,7 +130,7 @@ const CustomerRegister = ()=>{
                                     .then((response)=>{
                                         dispatch(login(response))
                                         dispatch(clearMessage())
-                                        navigate('/')
+                                        navigate('/customer/home')
                                     })
                                     .catch((error)=>{
                                         dispatch(loadMessage(error.response))

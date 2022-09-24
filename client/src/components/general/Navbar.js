@@ -22,10 +22,10 @@ const Navbar = ()=>{
              </NavLink>
            </li>
            <li className="nav-item">
-             <NavLink className="nav-link active" to="/">Sign In</NavLink>
+             <NavLink className="nav-link active" to="/customer/login">Sign In</NavLink>
            </li>
            <li className="nav-item">
-             <NavLink className="nav-link active" to="/">Sign Up</NavLink>
+             <NavLink className="nav-link active" to="/customer/register">Sign Up</NavLink>
            </li>
          </ul>
        </div>
