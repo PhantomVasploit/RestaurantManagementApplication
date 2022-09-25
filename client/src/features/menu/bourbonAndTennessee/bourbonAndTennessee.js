@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchBourbonAndTennessee = createAsyncThunk('bourbonAndTennessee/fetchBourbonAndTennessee', ()=>{
   return axios
     .get('http://127.0.0.1:5003/api/menu/bourbon')
-    .then((response)=>{return response.data});
+    .then((response)=>{return response.data.bourbonDrinks});
 });
 
 const slice = createSlice({
@@ -15,7 +15,7 @@ const slice = createSlice({
     error: ''
   },
   extraReducers: (builder)=>{
-    builder.addCase(fetchBourbonAndTennessee.pending, (state, action)=>{
+    builder.addCase(fetchBourbonAndTennessee.pending, (state)=>{
       state.loading = true;
       state.bourbonAndTennessee = [];
       state.error = '';

@@ -14,9 +14,21 @@
   background-repeat: no-repeat;
 }
 
+.menuPage{
+  min-height: 100vh;
+  background-color: #0e0e10;
+}
+
+.searchSection{
+  min-height: 45vh;
+  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/searchMenuImage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .welcomeNote{
   width: 300px;
-  height: 539px;
+  height: 595px;
   background-color: #0e0e10;
   opacity: 0.9;
   padding: 55px;
@@ -24,6 +36,10 @@
 
 .formContainer{
   min-height: 100vh;
+}
+
+.card{
+  width: 20rem;
 }
 
 .formSideImage{
@@ -58,7 +74,7 @@
   height: 80vh;
 }
 
-.btn{
+.landingPage btn{
   background-color: #de6622;
   color: white;
 }

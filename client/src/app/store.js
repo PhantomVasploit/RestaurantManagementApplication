@@ -13,6 +13,17 @@ import aperitifsAndBittersReducer from '../features/menu/aperitifsAndBitters/ape
 import beerReducer from '../features/menu/beer/beer';
 import bourbonAndTennesseeReducer from '../features/menu/bourbonAndTennessee/bourbonAndTennessee';
 import breakfastBitesReducer from '../features/menu/breakfastBites/breakfastBites';
+import champagneReducer from '../features/menu/champagne/champagne';
+import ciderReducer from '../features/menu/cider/cider';
+import cognacReducer from '../features/menu/cognac/cognac';
+import ginReducer from '../features/menu/gin/gin';
+import juiceReducer from '../features/menu/juice/juice';
+import lifeStyleReducer from '../features/menu/lifeStyle/lifeStyle';
+import mineralWaterReducer from '../features/menu/mineralWater/mineralWater';
+import premiumBitesReducer  from '../features/menu/premiumBites/premiumBites';
+import redWineReducer from '../features/menu/redWine/redWine';
+import whiteWineReducer from '../features/menu/whiteWine/whiteWine';
+import rumReducer from '../features/menu/rum/rum';
 import ordersReducer from '../features/orders/orders';
 
 const reducers = combineReducers({
@@ -26,6 +37,17 @@ const reducers = combineReducers({
     beer: beerReducer,
     bourbonAndTennessee: bourbonAndTennesseeReducer,
     breakfastBites: breakfastBitesReducer,
+    champagne: champagneReducer,
+    cider: ciderReducer,
+    cognac: cognacReducer,
+    gin: ginReducer,
+    juice: juiceReducer,
+    lifeStyle: lifeStyleReducer,
+    mineralWater: mineralWaterReducer,
+    premiumBites: premiumBitesReducer,
+    redWine: redWineReducer,
+    rum: rumReducer,
+    whiteWine: whiteWineReducer,
     orders: ordersReducer
 });
 

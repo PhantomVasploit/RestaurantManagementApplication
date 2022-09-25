@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchBreakfastBites = createAsyncThunk('breakfastBites/fetchBreakfastBites', ()=>{
   return axios
     .get('http://127.0.0.1:5003/api/menu/breakfast-bites')
-    .then((response)=>{return response.data});
+    .then((response)=>{return response.data.breakfastBites});
 });
 
 const slice = createSlice({
@@ -15,7 +15,7 @@ const slice = createSlice({
     error: ''
   },
   extraReducers: (builder)=>{
-    builder.addCase(fetchBreakfastBites.pending, (state, action)=>{
+    builder.addCase(fetchBreakfastBites.pending, (state)=>{
       state.loading = true;
       state.breakfastBites = [];
       state.error = '';

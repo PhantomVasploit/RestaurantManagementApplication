@@ -29,10 +29,10 @@ const LandingPage = ()=>{
             </p>
             <div className='row'>
               <div className='col'>
-                <Link to='/' className='rounded-2 btn'> Explore Menu </Link>
+                <Link to='/' className='rounded-2 btn btn-outline-light'> Explore Menu </Link>
               </div>
               <div className='col'>
-                <Link to='/' className='rounded-2 btn'> Book A Table </Link>
+                <Link to='/' className='rounded-2 btn btn-outline-light'> Book A Table </Link>
               </div>
             </div>
           </div>

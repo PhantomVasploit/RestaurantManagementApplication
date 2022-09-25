@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchHotBeverage = createAsyncThunk('hotBeverage/fetchHotBeverage', ()=>{
   return axios
     .get("http://127.0.0.1:5003/api/menu/hot-beverage")
-    .then( (response) => {return response.data});
+    .then( (response) => {return response.data.hotBeverage});
 })
 
 const slice = createSlice({
@@ -15,7 +15,7 @@ const slice = createSlice({
     error: ''
   },
   extraReducers: (builder)=>{
-    builder.addCase(fetchHotBeverage.pending, (state, action)=>{
+    builder.addCase(fetchHotBeverage.pending, (state)=>{
       state.loading = true;
       state.hotBeverage = [];
       state.error = '';

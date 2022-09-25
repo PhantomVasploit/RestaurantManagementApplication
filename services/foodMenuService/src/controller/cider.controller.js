@@ -14,7 +14,7 @@ module.exports.createCiderMenu = (req, res)=>{
 
   data.map((item)=>{
     Cider.create(item)
-    then((cider)=>{
+    .then((cider)=>{
       logger.info(`Cider menu items successfully seeded to the database: ${JSON.stringify(cider)}`);
     })
     .catch((e)=>{
@@ -28,7 +28,7 @@ module.exports.createCiderMenu = (req, res)=>{
 module.exports.getCiderMenu = (req, res)=>{
   Cider.find({})
   .then((cider)=>{
-    res.status(200).json({message: 'Fetch successful'});
+    res.status(200).json({message: 'Fetch successful'}, cider);
   })
   .catch((e)=>{
     throw e;
