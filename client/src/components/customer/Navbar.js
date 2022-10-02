@@ -5,6 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 
 import { logout } from '../../features/customer/customer';
+import { clearMainCourseMeals } from '../../features/menu/mainCourse/mainCourse';
 
 const Navbar = ()=>{
     const customer = useSelector((state)=>state.customer)
@@ -57,12 +58,16 @@ const Navbar = ()=>{
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="/">
+                                <NavLink className="nav-link active" to="/customer/orders">
                                     <FontAwesomeIcon icon={faCartShopping} />
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" to='/' onClick={ ()=>{dispatch(logout())} }>
+                                <Link className="nav-link active" to='/' 
+                                onClick={ ()=>{
+                                        dispatch(logout())
+                                        dispatch(clearMainCourseMeals())
+                                        } }>
                                     <FontAwesomeIcon icon={faSignOut} />
                                 </Link>
                             </li>

@@ -11,10 +11,13 @@ import AdminRegister from './components/admin/Register';
 import CustomerRegister from './components/customer/Register';
 import CustomerLogin from './components/customer/Login';
 import Home from './components/customer/Home';
-import Menu from './components/customer/Menu';
+import Menu from './components/customer/menu/Menu';
+import Orders from './components/customer/Orders';
 
 import ChefRegister from './components/chef/Register';
 import ChefLogin from './components/chef/Login';
+
+import Error404 from './components/general/Error404';
 
 function App() {
   return (
@@ -30,9 +33,12 @@ function App() {
           <Route path='/customer/login' element={ <CustomerLogin /> } />
           <Route path='/customer/home' element={ <Home /> } />
           <Route path='/customer/menu' element={ <Menu /> } />
+          <Route path='/customer/orders' element={ <Orders /> } />
 
           <Route path='/chef/register' element={ <ChefRegister /> } />
           <Route path='/chef/login' element={ <ChefLogin /> } />
+
+          <Route path='*' element={<Error404/>} />
         </Routes>
       </Router>
     </div>

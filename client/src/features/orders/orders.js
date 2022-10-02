@@ -4,17 +4,28 @@ const slice = createSlice({
     name: 'orders',
     initialState: [],
     reducers: {
-        addOrder: (state, action)=>{
-            state.push(action.payload);
+        addOrders: (state, action)=>{
+            state.concat(action.payload)
         },
-        removeOrder: (state, action)=>{
-            state.filter(item => item._id === action.payload);
+        increaseQuantity: (state, action)=>{
+            state.map((item)=>{
+                if(item.itemName === action.payload.name){
+                    return item.itemQuantity += 1
+                }
+            })
         },
-        clearOrders: (state)=>{
-            state = [];
+        decreaseQuantity: (state, action)=>{
+            state.map((item)=>{
+                if(item.itemName === action.payload.name){
+                    return item.itemQuantity > 1 ? item.itemQuantity -= 1 : item.itemQuantity = 1
+                }
+            })
+        },
+        removeItem: (state, action)=>{
+            state.filter((item)=>item.itemName === action.payload.name)   
         }
     }
 })
 
-export const { addOrder, removeOrder, clearOrders } = slice.actions;
+export const { addOrders, increaseQuantity, decreaseQuantity, removeItem } = slice.actions;
 export default slice.reducer;

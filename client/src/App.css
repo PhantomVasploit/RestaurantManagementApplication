@@ -7,6 +7,12 @@
   overflow: hidden;
 }
 
+.orderPage{
+  min-height: 100vh;
+  background-color: #0e0e10;
+  overflow: hidden;
+}
+
 .customerHomePage{
   min-height: 100vh;
   background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/image2.jpg');
@@ -20,7 +26,7 @@
 }
 
 .searchSection{
-  min-height: 45vh;
+  min-height: 50vh;
   background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/searchMenuImage.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -77,4 +83,50 @@
 .landingPage btn{
   background-color: #de6622;
   color: white;
+}
+
+.card img{
+  height: 12rem;
+}
+
+.menu-heading span{
+  background: #ffc823;
+  padding: .5rem 1rem;
+  clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.errorPage{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: linear-gradient(125deg, #6a89cc, #b8e994);
+}
+
+.errorContainer{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #343434;
+}
+
+.errorContainer h1{
+  font-size: 250px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 20px;
+  background: url('./assets/404BackgroundImage.jpg') center no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.apiErrorText{
+  font-size: 35px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 20px;
+  background: url('./assets/404BackgroundImage.jpg') center no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
