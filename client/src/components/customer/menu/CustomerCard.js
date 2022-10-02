@@ -1,15 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 
 
 import { addOrder } from "../../../features/orders/order";
-import { addOrders } from "../../../features/orders/orders";
 
 const CustomerCard = ({meal})=>{
+
     const dispatch = useDispatch()
-    const order = useSelector((state)=>state.order)
-    
     const addToCartNotification = ()=>{
         toast.success('Item Added to Cart', {
             position: toast.POSITION.TOP_CENTER,
@@ -37,7 +35,6 @@ const CustomerCard = ({meal})=>{
                                 onClick={ ()=>{
                                     dispatch(addOrder(meal))
                                     addToCartNotification()
-                                    dispatch(addOrders(order))
                                 }}
                                 >Order Now</button>
                                 <ToastContainer />

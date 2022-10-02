@@ -67,16 +67,23 @@ const Menu = ()=>{
                             <div className="text-center">
                                 <h1 className="display-5 text-center text-light mb-5 menu-heading"> Our <span className="text-dark">Menu</span></h1>
                             </div>
-                            <div className="row mt-5 align-items-center d-flex justify-content-around">
-                                {
-                                    mainCourseMeals.mainCourseMeals.map((meal)=>(
-                                        <CustomerCard
-                                            className="mb-5"
-                                            meal = {meal}
-                                            key={meal._id}
-                                        />
-                                    ))
-                                }
+
+                            <div className="bloc-tabs">
+                                <button className="btn btn-outline-warning">Tab 1</button>
+                            </div>
+                            <div className="content-tabs">
+                                <div></div>
+                                <div className="row mt-5 align-items-center d-flex justify-content-around">
+                                    {
+                                        mainCourseMeals.mainCourseMeals.map((meal)=>(
+                                            <CustomerCard
+                                                className="mb-5"
+                                                meal = {meal}
+                                                key={meal._id}
+                                            />
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </section>

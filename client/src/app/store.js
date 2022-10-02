@@ -25,7 +25,7 @@ import redWineReducer from '../features/menu/redWine/redWine';
 import whiteWineReducer from '../features/menu/whiteWine/whiteWine';
 import rumReducer from '../features/menu/rum/rum';
 import orderReducer from '../features/orders/order';
-import ordersReducer from '../features/orders/orders';
+
 
 const reducers = combineReducers({
     admin: adminReducer,
@@ -49,8 +49,7 @@ const reducers = combineReducers({
     redWine: redWineReducer,
     rum: rumReducer,
     whiteWine: whiteWineReducer,
-    order: orderReducer,
-    orders: ordersReducer
+    orders: orderReducer
 });
 
 const persistConfig = {
