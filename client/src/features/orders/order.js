@@ -35,9 +35,12 @@ const slice = createSlice({
         },
         removeItem: (state, action)=>{
             state.orders.filter((item)=>item.name === action.payload.name)   
+        },
+        clearOrders: (state, action)=>{
+            state.orders = []
         }
     }
 })
 
-export const { addOrder, increaseQuantity, decreaseQuantity, removeItem } = slice.actions;
+export const { addOrder, increaseQuantity, decreaseQuantity, removeItem, clearOrders } = slice.actions;
 export default slice.reducer;
