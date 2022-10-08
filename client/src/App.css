@@ -13,6 +13,43 @@
   overflow: hidden;
 }
 
+.cartContainer table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cartContainer table th{
+  text-align: left;
+  padding: 5px;
+  background: #ff523b;
+}
+
+.cartContainer table td{
+  padding: 10px 5px;
+}
+
+.totalPrice{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.totalPrice table{
+  border-top: 3px solid #ff523b;
+  width: 100%;
+  max-width: 250px;
+}
+td:last-child{
+  text-align: right;
+}
+th:last-child{
+  text-align: right;
+}
+
+.paymentSection{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .customerHomePage{
   min-height: 100vh;
   background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/image2.jpg');

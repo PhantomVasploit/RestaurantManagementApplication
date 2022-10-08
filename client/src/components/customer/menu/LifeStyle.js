@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchLifeStyle } from "../../../features/menu/lifeStyle/lifeStyle";
+import { clearLifeStyle, fetchLifeStyle } from "../../../features/menu/lifeStyle/lifeStyle";
 import CustomerCard from "./CustomerCard";
 
 const LifeStyle = ()=>{
@@ -12,6 +12,9 @@ const LifeStyle = ()=>{
 
     useEffect(()=>{
         dispatch(fetchLifeStyle())
+        return ()=>{
+            dispatch(clearLifeStyle())
+        }
     }, [])
 
     return (

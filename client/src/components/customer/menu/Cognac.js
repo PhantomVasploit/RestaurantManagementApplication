@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchCognac } from "../../../features/menu/cognac/cognac";
+import { clearCognac, fetchCognac } from "../../../features/menu/cognac/cognac";
 import CustomerCard from "./CustomerCard";
 
 const Cognac = ()=>{
@@ -12,6 +12,9 @@ const Cognac = ()=>{
 
     useEffect(()=>{
         dispatch(fetchCognac())
+        return ()=>{
+            dispatch(clearCognac())
+        }
     }, [])
 
     return (

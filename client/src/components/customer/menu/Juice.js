@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchJuice } from "../../../features/menu/juice/juice";
+import { clearJuice, fetchJuice } from "../../../features/menu/juice/juice";
 import CustomerCard from "./CustomerCard";
 
 const Juice = ()=>{
@@ -12,6 +12,9 @@ const Juice = ()=>{
 
     useEffect(()=>{
         dispatch(fetchJuice())
+        return ()=>{
+            dispatch(clearJuice())
+        }
     }, [])
     
     return (

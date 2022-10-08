@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchAperitifsAndBitters } from "../../../features/menu/aperitifsAndBitters/aperitifsAndBitters";
+import { clearAperiritifsAndBitters, fetchAperitifsAndBitters } from "../../../features/menu/aperitifsAndBitters/aperitifsAndBitters";
 import CustomerCard from "./CustomerCard";
 
 const AperitifsAndBitters = ()=>{
@@ -12,6 +12,9 @@ const AperitifsAndBitters = ()=>{
 
     useEffect(()=>{
         dispatch(fetchAperitifsAndBitters())
+        return ()=>{
+            dispatch(clearAperiritifsAndBitters())
+        }
     }, [])
 
     return (

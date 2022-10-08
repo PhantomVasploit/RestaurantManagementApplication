@@ -15,6 +15,13 @@ const slice =  createSlice({
         rum: [],
         error: ''
     },
+    reducers: {
+        clearRum: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.rum = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchRum.pending, (state)=>{
@@ -38,4 +45,5 @@ const slice =  createSlice({
     }
 });
 
+export const { clearRum } = slice.actions;
 export default slice.reducer;

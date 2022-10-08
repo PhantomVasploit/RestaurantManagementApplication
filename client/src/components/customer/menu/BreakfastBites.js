@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchBreakfastBites } from "../../../features/menu/breakfastBites/breakfastBites";
+import { clearBreakfastBites, fetchBreakfastBites } from "../../../features/menu/breakfastBites/breakfastBites";
 import CustomerCard from "./CustomerCard";
 
 const BreakfastBites = ()=>{
@@ -11,6 +11,9 @@ const BreakfastBites = ()=>{
 
     useEffect(()=>{
         dispatch(fetchBreakfastBites())
+        return ()=>{
+            dispatch(clearBreakfastBites())
+        }
     }, [])
 
     return (

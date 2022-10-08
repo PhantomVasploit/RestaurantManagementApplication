@@ -15,6 +15,13 @@ const slice = createSlice({
         premiumBites: [],
         error: ''
     },
+    reducers: {
+        clearPremiumBites: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.premiumBites = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchPremiumBites.pending, (state)=>{
@@ -38,4 +45,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearPremiumBites } = slice.actions;
 export default slice.reducer;

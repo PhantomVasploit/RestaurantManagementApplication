@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchLifeStyle = createAsyncThunk('lifeStyle/fetchLifeStyle', ()=>{
     return axios
-    .get('http:127.0.0.1:5003/api/menu/lfe-style')
+    .get('http://127.0.0.1:5003/api/menu/life-style')
     .then((response)=>{return response.data.lifeStyle})
 });
 
@@ -13,6 +13,13 @@ const slice = createSlice({
         loading: false,
         lifeStyle: [],
         error: ''
+    },
+    reducers: {
+        clearLifeStyle: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.lifeStyle = []
+        }
     },
     extraReducers: (builder)=>{
 
@@ -37,4 +44,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearLifeStyle } = slice.actions
 export default slice.reducer;

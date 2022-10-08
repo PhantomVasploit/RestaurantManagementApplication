@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
 
-import { fetchPremiumBites } from "../../../features/menu/premiumBites/premiumBites";
+import { clearPremiumBites, fetchPremiumBites } from "../../../features/menu/premiumBites/premiumBites";
 import CustomerCard from "./CustomerCard";
 
 const PremiumBites = ()=>{
@@ -12,6 +12,9 @@ const PremiumBites = ()=>{
 
     useEffect(()=>{
         dispatch(fetchPremiumBites())
+        return ()=>{
+            dispatch(clearPremiumBites())
+        }
     },[])
 
     return (

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
 
 import CustomerCard from "./CustomerCard";
-import { fetchMainCourseMeals } from "../../../features/menu/mainCourse/mainCourse";
+import { clearMainCourseMeals, fetchMainCourseMeals } from "../../../features/menu/mainCourse/mainCourse";
 
 const MainCourse = ()=>{
     const dispatch = useDispatch()
@@ -11,6 +11,9 @@ const MainCourse = ()=>{
 
     useEffect(()=>{
         dispatch(fetchMainCourseMeals())
+        return ()=>{
+            dispatch(clearMainCourseMeals())
+        }
     }, [])
 
     return(

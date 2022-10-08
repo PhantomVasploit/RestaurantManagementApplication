@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRum } from "../../../features/menu/rum/rum";
+import { clearRum, fetchRum } from "../../../features/menu/rum/rum";
 
 import CustomerCard from "./CustomerCard";
 
@@ -12,6 +12,9 @@ const Rum = ()=>{
 
     useEffect(()=>{
         dispatch(fetchRum())
+        return ()=>{
+            dispatch(clearRum())
+        }
     }, [])
 
     return (

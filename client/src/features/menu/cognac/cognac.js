@@ -14,6 +14,13 @@ const slice = createSlice({
         cognac: [],
         error: ''
     },
+    reducers: {
+        clearCognac: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.cognac = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchCognac.pending, (state)=>{
@@ -37,4 +44,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearCognac } = slice.actions;
 export default slice.reducer;

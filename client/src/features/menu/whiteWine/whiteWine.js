@@ -15,6 +15,13 @@ const slice = createSlice({
         whiteWine: [],
         error: ''
     },
+    reducers: {
+        clearWhiteWine: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.whiteWine = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchWhiteWine.pending, (state)=>{
@@ -38,4 +45,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearWhiteWine } = slice.actions;
 export default slice.reducer;

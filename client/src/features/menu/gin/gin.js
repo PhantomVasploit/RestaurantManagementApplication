@@ -14,6 +14,13 @@ const slice = createSlice({
         gin: [],
         error: ''
     },
+    reducers: {
+        clearGin: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.gin = []
+        }
+    },
     extraReducers: (buillder)=>{
 
         buillder.addCase(fetchGin.pending, (state)=>{
@@ -37,4 +44,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearGin } = slice.actions;
 export default slice.reducer;

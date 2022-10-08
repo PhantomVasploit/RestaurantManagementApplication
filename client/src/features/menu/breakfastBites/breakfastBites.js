@@ -14,6 +14,14 @@ const slice = createSlice({
     breakfastBites: [],
     error: ''
   },
+  reducers: {
+    clearBreakfastBites: (state)=>{
+      state.loading = false
+      state.error = ''
+      state.breakfastBites = []
+    }
+  }
+  ,
   extraReducers: (builder)=>{
     builder.addCase(fetchBreakfastBites.pending, (state)=>{
       state.loading = true;
@@ -33,4 +41,5 @@ const slice = createSlice({
   }
 });
 
+export const { clearBreakfastBites } = slice.actions;
 export default slice.reducer;

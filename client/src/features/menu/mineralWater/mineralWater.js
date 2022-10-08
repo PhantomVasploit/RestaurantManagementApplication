@@ -14,6 +14,13 @@ const slice = createSlice({
         mineralWater: [],
         error: ''
     },
+    reducers: {
+        clearMineralWater: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.mineralWater = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchMineralWater.pending, (state)=>{
@@ -37,4 +44,5 @@ const slice = createSlice({
     }
 })
 
+export const { clearMineralWater } = slice.actions;
 export default slice.reducer;

@@ -14,6 +14,14 @@ const slice = createSlice({
     bourbonAndTennessee: [],
     error: ''
   },
+  reducers: {
+    clearbourbonAndTenneessee: (state)=>{
+      state.loading = false
+      state.error = ''
+      state.bourbonAndTennessee = []
+    }
+  }
+  ,
   extraReducers: (builder)=>{
     builder.addCase(fetchBourbonAndTennessee.pending, (state)=>{
       state.loading = true;
@@ -33,4 +41,5 @@ const slice = createSlice({
   }
 })
 
+export const { clearbourbonAndTenneessee } = slice.actions;
 export default slice.reducer;

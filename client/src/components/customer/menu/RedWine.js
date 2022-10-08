@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchRedWine } from "../../../features/menu/redWine/redWine";
+import { clearRedWine, fetchRedWine } from "../../../features/menu/redWine/redWine";
 import CustomerCard from "./CustomerCard";
 
 const RedWine = ()=>{
@@ -12,6 +12,9 @@ const RedWine = ()=>{
 
     useEffect(()=>{
         dispatch(fetchRedWine())
+        return ()=>{
+            dispatch(clearRedWine())
+        }
     }, [])
 
     return (

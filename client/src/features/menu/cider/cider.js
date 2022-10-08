@@ -14,6 +14,13 @@ const slice = createSlice({
         cider: [],
         error: ''
     },
+    reducers: {
+        clearCider: (state)=>{
+            state.loading = false
+            state.error = ''
+            state.cider = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchCider.pending, (state)=>{
@@ -36,4 +43,5 @@ const slice = createSlice({
     }
 });
 
+export const { clearCider } = slice.actions;
 export default slice.reducer;

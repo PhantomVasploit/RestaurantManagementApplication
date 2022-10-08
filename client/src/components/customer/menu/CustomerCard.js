@@ -20,7 +20,7 @@ const CustomerCard = ({meal})=>{
     } 
 
     return(
-        <div className="col-8 col-lg-4 col-xl-3">
+        <div className="col-md-4 mb-3">
             <div className="card shadow p-3 rounded">
             <img className="card-img-top rounded" height="200" width="200" src={meal.imgUrl} alt="mealImage" />
                 <div className="card-body">

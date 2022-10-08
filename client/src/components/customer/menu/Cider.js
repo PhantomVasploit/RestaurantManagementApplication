@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchCider } from "../../../features/menu/cider/cider";
+import { clearCider, fetchCider } from "../../../features/menu/cider/cider";
 import CustomerCard from "./CustomerCard";
 
 const Cider = ()=>{
@@ -12,6 +12,9 @@ const Cider = ()=>{
 
     useEffect(()=>{
         dispatch(fetchCider())
+        return ()=>{
+            dispatch(clearCider())
+        }
     }, [])
 
     return (

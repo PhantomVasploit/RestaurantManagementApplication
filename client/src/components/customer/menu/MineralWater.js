@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMineralWater } from "../../../features/menu/mineralWater/mineralWater";
+import { clearMineralWater, fetchMineralWater } from "../../../features/menu/mineralWater/mineralWater";
 
 import CustomerCard from "./CustomerCard";
 
@@ -12,6 +12,9 @@ const MineralWater = ()=>{
 
     useEffect(()=>{
         dispatch(fetchMineralWater())
+        return ()=>{
+            dispatch(clearMineralWater())
+        }
     }, [])
 
     return (

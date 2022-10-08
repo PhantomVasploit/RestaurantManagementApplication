@@ -14,6 +14,13 @@ const slice = createSlice({
     beer: [],
     error: ''
   },
+  reducers:{
+    clearBeer: (state)=>{
+      state.loading = false
+      state.error = ''
+      state.beer = []
+    }
+  },
   extraReducers: (builder)=>{
     builder.addCase(fetchBeer.pending, (state)=>{
       state.loading = true;
@@ -33,4 +40,5 @@ const slice = createSlice({
   }
 });
 
+export const { clearBeer } = slice.actions;
 export default slice.reducer;

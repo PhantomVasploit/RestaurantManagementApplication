@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGin } from "../../../features/menu/gin/gin";
+import { clearGin, fetchGin } from "../../../features/menu/gin/gin";
 
 import CustomerCard from "./CustomerCard";
 
@@ -12,6 +12,9 @@ const Gin = ()=>{
 
     useEffect(()=>{
         dispatch(fetchGin())
+        return ()=>{
+            dispatch(clearGin())
+        }
     }, [])
 
     return (

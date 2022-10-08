@@ -5,10 +5,10 @@ import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 
 import { logout } from '../../features/customer/customer';
-import { clearMainCourseMeals } from '../../features/menu/mainCourse/mainCourse';
 
 const Navbar = ()=>{
     const customer = useSelector((state)=>state.customer)
+    const orders = useSelector((state)=>state.orders.orders)
     const dispatch = useDispatch()
   return(
     <>
@@ -53,20 +53,30 @@ const Navbar = ()=>{
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-">
                             <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/">
+                                <NavLink className="nav-link active" aria-current="page" to="/customer/home">
                                     <FontAwesomeIcon icon={ faHome } />
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link active" to="/customer/orders">
-                                    <FontAwesomeIcon icon={faCartShopping} />
-                                </NavLink>
+                                {
+                                    orders.length <= 0
+                                    ?
+                                        <NavLink className="nav-link active" to="/customer/orders">
+                                            <FontAwesomeIcon icon={faCartShopping} />
+                                        </NavLink>
+                                    :
+                                        <NavLink className="nav-link active position-relative" to="/customer/orders">
+                                            <FontAwesomeIcon icon={faCartShopping} />
+                                            <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
+                                                {orders.length}
+                                            </span>
+                                        </NavLink>
+                                }
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" to='/' 
                                 onClick={ ()=>{
                                         dispatch(logout())
-                                        dispatch(clearMainCourseMeals())
                                         } }>
                                     <FontAwesomeIcon icon={faSignOut} />
                                 </Link>

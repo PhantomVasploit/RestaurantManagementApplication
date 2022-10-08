@@ -14,6 +14,13 @@ const slice = createSlice({
         juice: [],
         error: ''
     },
+    reducers: {
+        clearJuice: (state)=>{
+            state.loading = ''
+            state.error = ''
+            state.juice = []
+        }
+    },
     extraReducers: (builder)=>{
 
         builder.addCase(fetchJuice.pending, (state)=>{
@@ -37,4 +44,5 @@ const slice = createSlice({
     }
 })
 
+export const { clearJuice } = slice.actions;
 export default slice.reducer;
