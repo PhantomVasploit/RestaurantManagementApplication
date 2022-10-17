@@ -1,50 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import Navbar from './Navbar';
-
+import { Link, NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const LandingPage = ()=>{
   
 
   return (
     <div className='landingPage'>
-      <Navbar />
-      <div className='container'>
-        <div className='row hero justify-content-center align-items-center'>
-
-          <div className='col-md-5 text-md-start heroTextContent'>
-            <h1 className='align-middle'>
-              <div>
-                <div className='text-light display-3 heroHeading' > COOX'S</div>
-              </div>
-              <div>
-                <div className='text-light display-3 heroHeading'> RESTAURANT</div>
-              </div>
-            </h1>
-            <p className='text-light lead heroText'>
-              "Cooking is all about people. Food maybe the only universal thing that really has the power to
+      <section>
+        <div className='blurClr'></div>
+        <div className='blurClr'></div>  
+        <header>
+          <NavLink className="navbar-brand logoText fw-bold logo" to="/">
+            COOX'S RESTAURANT
+          </NavLink>
+          <ul className='nav'>
+            <li className="nav-item">
+              <NavLink className="nav-link active link" aria-current="page" to="/">
+                <FontAwesomeIcon icon={ faHome } />
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active link" to="/customer/login">Sign In</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active link" to="/customer/register">Sign Up</NavLink>
+            </li>
+          </ul>
+        </header>
+        <div className='content'>
+          <div className='contentBox'>
+            <h1>COOX'S RESTAURANT</h1>
+            <p>
+            "Cooking is all about people. Food maybe the only universal thing that really has the power to
               bring everyone together. No matter what culture, everywhere around the world, people eat together"
               - Guy Fieri
             </p>
-            <div className='row'>
-              <div className='col'>
-                <Link to='/' className='rounded-2 btn btn-outline-light'> Explore Menu </Link>
-              </div>
-              <div className='col'>
-                <Link to='/' className='rounded-2 btn btn-outline-light'> Book A Table </Link>
-              </div>
-            </div>
+            <Link to='/customer/menu' className='btn btn-warning' >Order Now</Link>
           </div>
-
-          <div className='col-md-5 d-none d-md-block'>
-            <div>
-              <img className='img-fluid heroImage mb-5 border border-warning border-2 rounded-end' height='100px' src={require('../../assets/pizza.jpg')} alt='pizza-cover' />
-            </div>
+          <div className='imgBox mt-5'>
+            <img src={require('../../assets/FloatingBurger.png')} alt="floatingBurger"  />
           </div>
-
-        </div>
-      </div>
+        </div>      
+      </section>
     </div>
   )
 }

@@ -46,7 +46,8 @@ const Orders = ()=>{
                                                 <p className="lead">{ order.name }</p>
                                                 <p className="lead">KES { order.price }</p>
                                                 <a 
-                                                    className="lead text-danger text-decoration-none"
+                                                    className="lead text-danger text-decoration-none removeBtn"
+                                                    href="/customer/orders"
                                                     onClick={()=>{
                                                         dispatch(removeItem(order))
                                                     }}
@@ -103,19 +104,6 @@ const Orders = ()=>{
                                     dispatch(clearOrders())
                                 }}
                                 >Clear Cart</button></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div className="totalPrice mt-5">
-                        <table className="text-light">
-                            <tr>
-                                <td><h5 className="lead">Proceed To Payment</h5></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><button className="btn btn-primary">Paypal</button></td>
-                                <td><button className="btn btn-success">MPesa</button></td>
                             </tr>
                         </table>
                     </div>

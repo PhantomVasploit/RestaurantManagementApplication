@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik ,Form } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,123 +25,121 @@ const CustomerLogin = ()=>{
 
         <>
             { 
-                !errorMessage 
+                !errorMessage
                 ?
-                    (
-                        <div className="container-fluid">
-                            <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                                <div className="col formSideImage shadow-lg p-3 bg-white">
-                                    <h1 className="display-3 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay">
+                                    
                                 </div>
-
-                                <div className="col ms-5 me-5 mt-5">
-                                    <Formik 
-                                    initialValues={{
-                                        password: "",
-                                        email: ""
-                                    }}
-                                    validationSchema = {validate}
-                                    onSubmit = {(values)=>{
-                                        const requestOptions = {
-                                            headers: {
-                                                "Acess-Controll-Allow-Origin": "*",
-                                                "Content-Type": "application/json;charset=UTF-8",
-                                                "accept":"application/json"
-                                            },
-                                            body: values
-                                        }
-                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
-                                        .then((response)=>{
-                                            dispatch(login(response))
-                                            navigate('/customer/home')
-                                        })
-                                        .catch((error)=>{
-                                            dispatch(loadMessage(error.response))
-                                        })
-                                    }}
-                                    >
-                                        {
-                                            formik =>(
-                                                <Form>
-                                                    <fieldset className="form-group">
-                                                        <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign In</legend>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
-                                                    </fieldset>
-                                                    <div className="d-flex justify-content-center mt-4">
-                                                        <input className="btn" type="submit" value="Login" />
-                                                    </div>
-                                                </Form>
-                                            )
-                                        }
-
-                                    </Formik>
-                                    <Link to='/customer/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
-                                </div>
-
                             </div>
+
+                            <div className="formContainer signUpContainer">
+                            <Formik
+
+                                initialValues={{
+                                    email: '',
+                                    password: ''
+                                }}
+
+                                validationSchema = {validate}
+
+                                onSubmit = { (values)=>{
+                                    const requestOptions = {
+                                        headers: {
+                                            "Acess-Controll-Allow-Origin": "*",
+                                            "Content-Type": "application/json;charset=UTF-8",
+                                            "accept":"application/json"
+                                        },
+                                        body: values
+                                    }
+                                    axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                    .then((response)=>{
+                                        dispatch(login(response))
+                                        navigate('/customer/home')
+                                    })
+                                    .catch((error)=>{
+                                        dispatch(loadMessage(error.response))
+                                    })
+                                }}
+
+                                >
+                                    <Form>
+                                        <fieldset className="form-group">
+                                            <legend className="display-6 mb-4 text-center">Sign In</legend>
+                                            <InputField className="formInput" placeholder="Email" name='email' type='email' required />
+                                            <InputField className="formInput" placeholder="Password" name='password' type='password' required />
+                                        </fieldset>
+                                        <div className="d-flex justify-content-center mt-4">
+                                            <input className="btn btn-warning" type="submit" value="Login" />
+                                        </div>
+                                        <Link to='/customer/login' className="lead text-dark text-decoration-none mt-3">Don't Have An Account? SignUp</Link>
+                                    </Form>
+                                </Formik>
+                            </div>
+
                         </div>
-                    ) 
+                    </div>
                 :
-                    (
-                        <div className="container-fluid">
-                            <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                                <div className="col formSideImage shadow-lg p-3 bg-white">
-                                    <h1 className="display-3 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
-                                </div>
-
-                                <div className="col ms-5 me-5 mt-5">
-                                    <Formik 
-                                    initialValues={{
-                                        password: "",
-                                        email: ""
-                                    }}
-                                    validationSchema = {validate}
-                                    onSubmit = { (values)=>{
-                                        const requestOptions = {
-                                            headers: {
-                                                "Acess-Controll-Allow-Origin": "*",
-                                                "Content-Type": "application/json;charset=UTF-8",
-                                                "accept":"application/json"
-                                            },
-                                            body: values
-                                        }
-                                        axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
-                                        .then((response)=>{
-                                            dispatch(login(response))
-                                            dispatch(clearMessage())
-                                            navigate('/customer/home')
-                                        })
-                                        .catch((error)=>{
-                                            dispatch(loadMessage(error.response))
-                                        })
-                                    }}
-                                    >
-                                        {
-                                            formik =>(
-                                                <Form>
-                                                    <fieldset className="form-group">
-                                                        <legend className="border-bottom mb-4 text-center mt-4">Sign In</legend>
-                                                        <p className="text-danger text-lead">{errorMessage}</p>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
-                                                    </fieldset>
-                                                    <div className="d-flex justify-content-center mt-4">
-                                                        <input className="btn" type="submit" value="Login" />
-                                                    </div>
-                                                </Form>
-                                            )
-                                        }
-
-                                    </Formik>
-                                    <Link to='/customer/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
-                                </div>
-
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay"></div>
                             </div>
+
+                            <div className="formContainer signUpContainer">
+                            <Formik
+
+                                initialValues={{
+                                    email: '',
+                                    password: ''
+                                }}
+
+                                validationSchema = {validate}
+
+                                onSubmit = { (values)=>{
+                                    const requestOptions = {
+                                        headers: {
+                                            "Acess-Controll-Allow-Origin": "*",
+                                            "Content-Type": "application/json;charset=UTF-8",
+                                            "accept":"application/json"
+                                        },
+                                        body: values
+                                    }
+                                    axios.post('http://127.0.0.1:5001/api/customer/login', requestOptions)
+                                    .then((response)=>{
+                                        dispatch(login(response))
+                                        dispatch(clearMessage())
+                                        navigate('/customer/home')
+                                    })
+                                    .catch((error)=>{
+                                        dispatch(loadMessage(error.response))
+                                    })
+                                }}
+
+                                >
+                                    <Form>
+                                        <fieldset className="form-group">
+                                            <legend className="display-6 mb-4 text-center">Sign In</legend>
+                                            <p className="text-danger text-lead">{errorMessage}</p>
+                                            <InputField className="formInput" placeholder="Email" name='email' type='email' required />
+                                            <InputField className="formInput" placeholder="Password" name='password' type='password' required />
+                                        </fieldset>
+                                        <div className="d-flex justify-content-center mt-4">
+                                            <input className="btn btn-warning" type="submit" value="Login" />
+                                        </div>
+                                        <Link to='/customer/login' className="lead text-dark text-decoration-none mt-3">Don't Have An Account? SignUp</Link>
+                                    </Form>
+                                </Formik>
+                            </div>
+
                         </div>
-                    )
+                    </div>
             }
         </>
     );

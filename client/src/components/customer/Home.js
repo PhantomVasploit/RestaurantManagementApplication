@@ -33,7 +33,7 @@ const Home = ()=>{
                                         Please book a table with us to enjoy the finest service the world has to offer.
                                     </p>
                                     <div className="text-center">
-                                        <Link className="btn btn-outline-light" to='/'>Book a table</Link>
+                                        <Link className="btn btn-outline-light" to='/customer/reservation'>Book a table</Link>
                                     </div>
                             </div>
                             <div className="col">

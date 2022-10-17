@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
 import axios from "axios";
@@ -37,14 +37,17 @@ const CustomerRegister = ()=>{
             {
                 !errorMessage
                 ?
-                    <div className="container-fluid">
-                        <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                            <div className="col formSideImage shadow-lg p-3 bg-white">
-                                <h1 className="display-4 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay">
+                                    
+                                </div>
                             </div>
 
-                            <div className="col ms-5 me-5 mt-5">
+                            <div className="formContainer signUpContainer">
                             <Formik
 
                                 initialValues={{
@@ -79,32 +82,33 @@ const CustomerRegister = ()=>{
                                 >
                                     <Form>
                                         <fieldset className="form-group">
-                                            <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign Up</legend>
-                                            <InputField label='First Name' name='firstName' type='text' />
-                                            <InputField label='Last Name' name='lastName' type='text' />
-                                            <InputField label='Email' name='email' type='email' />
-                                            <InputField label='Phone Number' name='phoneNumber' type='tel' />
-                                            <InputField label='Password' name='password' type='password' />
+                                            <legend className="display-6 mb-4 text-center">Sign Up</legend>
+                                            <InputField className="formInput" placeholder="First Name" name='firstName' type='text' required />
+                                            <InputField className="formInput" placeholder="Last Name" name='lastName' type='text' required />
+                                            <InputField className="formInput" placeholder="Email" name='email' type='email' required />
+                                            <InputField className="formInput" placeholder="Phone Number" name='phoneNumber' type='tel' required />
+                                            <InputField className="formInput" placeholder="Password" name='password' type='password' required />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
-                                            <input className="btn" type="submit" value="Register" />
+                                            <input className="btn btn-warning" type="submit" value="Register" />
                                         </div>
+                                        <Link to='/customer/login' className="lead text-dark text-decoration-none mt-3">Already Have An Account? SignIn</Link>
                                     </Form>
                                 </Formik>
-                                <Link to='/customer/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>
                     </div>
                 :
-                    <div className="container-fluid">
-                        <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                            <div className="col formSideImage shadow-lg p-3 bg-white">
-                                <h1 className="display-4 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay"></div>
                             </div>
 
-                            <div className="col ms-5 me-5 mt-5">
+                            <div className="formContainer signUpContainer">
                             <Formik
 
                                 initialValues={{
@@ -140,20 +144,20 @@ const CustomerRegister = ()=>{
                                 >
                                     <Form>
                                         <fieldset className="form-group">
-                                            <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign Up</legend>
+                                            <legend className="display-6 mb-4 text-center">Sign Up</legend>
                                             <p className="text-danger text-lead">{errorMessage}</p>
-                                            <InputField label='First Name' name='firstName' type='text' />
-                                            <InputField label='Last Name' name='lastName' type='text' />
-                                            <InputField label='Email' name='email' type='email' />
-                                            <InputField label='Phone Number' name='phoneNumber' type='tel' />
-                                            <InputField label='Password' name='password' type='password' />
+                                            <InputField className="formInput" placeholder="First Name" name='firstName' type='text' required />
+                                            <InputField className="formInput" placeholder="Last Name" name='lastName' type='text' required />
+                                            <InputField className="formInput" placeholder="Email" name='email' type='email' required />
+                                            <InputField className="formInput" placeholder="Phone Number" name='phoneNumber' type='tel' required />
+                                            <InputField className="formInput" placeholder="Password" name='password' type='password' required />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
-                                            <input className="btn" type="submit" value="Register" />
+                                            <input className="btn btn-warning" type="submit" value="Register" />
                                         </div>
+                                        <Link to='/customer/login' className="lead text-dark text-decoration-none mt-3">Already Have An Account? SignIn</Link>
                                     </Form>
                                 </Formik>
-                                <Link to='/customer/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>

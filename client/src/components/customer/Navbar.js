@@ -44,7 +44,7 @@ const Navbar = ()=>{
             :
                 <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
                     <div className="container">
-                        <NavLink className="navbar-brand logoText fw-bold" to="/">
+                        <NavLink className="navbar-brand logoText fw-bold" to="/customer/home">
                             COOX'S RESTAURANT
                         </NavLink>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

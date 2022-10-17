@@ -13,6 +13,8 @@ import CustomerLogin from './components/customer/Login';
 import Home from './components/customer/Home';
 import Menu from './components/customer/menu/Menu';
 import Orders from './components/customer/Orders';
+import Reservation from './components/customer/Reservation';
+import ReservationConfirmation from './components/customer/ReservationConfirmation';
 
 import ChefRegister from './components/chef/Register';
 import ChefLogin from './components/chef/Login';
@@ -34,6 +36,8 @@ function App() {
           <Route path='/customer/home' element={ <Home /> } />
           <Route path='/customer/menu' element={ <Menu /> } />
           <Route path='/customer/orders' element={ <Orders /> } />
+          <Route path='/customer/reservation' element={ <Reservation /> } />
+          <Route path='/customer/reservation/confirm' element={ <ReservationConfirmation /> } />
 
           <Route path='/chef/register' element={ <ChefRegister /> } />
           <Route path='/chef/login' element={ <ChefLogin /> } />

@@ -4,7 +4,9 @@
   "description": "This is the order service for the Restaurant Management System.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "test": "jest --watchAll --verbose --detectOpenHandles"
   },
   "author": "Paul Sanga",
   "license": "ISC",
