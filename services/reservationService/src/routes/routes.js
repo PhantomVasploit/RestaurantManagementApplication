@@ -5,7 +5,7 @@ const { createReservation, getReservations, updateReservation, deleteReservation
 
 router.post('', createReservation)
 router.get('/:customerEmail', getReservations)
-router.patch('/:reservationId', updateReservation)
+router.put('/:reservationId', updateReservation)
 router.delete('/:reservationId', deleteReservation)
 
 

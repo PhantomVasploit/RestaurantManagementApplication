@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const { orderSchema } = require('./order.model')
+
 const { Schema } = mongoose
 const reservationSchema = new Schema({
     customer: {
@@ -18,10 +20,7 @@ const reservationSchema = new Schema({
         type: Number,
         required: [true, 'Number of guests field is required']
     },
-    orders: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Order'
-    }]
+    orders: [orderSchema]
 })
 
 const Reservation = mongoose.model('Reservation', reservationSchema)

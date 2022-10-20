@@ -1,17 +1,30 @@
 const Reservation = require('../models/reservation.model')
-const {Order} = require('../models/order.model')
+
+const logger = require('../config/winston.config')
+const {producer} = require('../config/producer.config')
+
 
 module.exports.createReservation = (req, res)=>{
     const { customer, reservationDate, reservationTime, numberOfGuests } = req.body
     const reqOrders = req.body.orders
-    console.log(JSON.stringify(reqOrders))
-    Reservation.create({customer, reservationDate, reservationTime, numberOfGuests })
+    Reservation.create({customer, reservationDate, reservationTime, numberOfGuests})
     .then((reservation)=>{
-        
-        res.status(201).json({message: 'Reservation has been saved', reservation})
+        reqOrders.map((order)=>{
+            reservation.orders.push(order)
+            reservation.save((err, data)=>{
+                if(err){
+                    throw err
+                }
+                if(data){
+                    return
+                }
+            })
+        })
+        res.status(201).json({message: 'Reservation saved', reservation})
+        producer(reservation)
     })
     .catch((e)=>{
-        throw e;
+        throw e
     })
 }
 
@@ -31,7 +44,7 @@ module.exports.updateReservation = (req, res)=>{
     const { customer, reservationDate, reservationTime, numberOfGuests } = req.body
     Reservation.findOneAndUpdate({_id: reservationId}, { customer, reservationDate, reservationTime, numberOfGuests })
     .then((reservation)=>{
-        reservation.orders = [...req.body.orders]
+        req.body.orders ? reservation.orders = [...req.body.orders] : reservation
         reservation.save()
         res.status(200).json({message: 'Reservation updated', reservation})
     })
