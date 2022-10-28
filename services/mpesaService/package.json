@@ -1,0 +1,37 @@
+{
+  "name": "mpesaservice",
+  "version": "1.0.0",
+  "description": "MPESA service for the restaurant application.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "test": "jest --verbose --watchAll -detectOpenHandles"
+  },
+  "author": "Paul Sanga",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios": "^1.1.3",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.7.0",
+    "morgan": "^1.10.0",
+    "winston": "^3.8.2",
+    "winston-mongodb": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "engines":{
+    "node": "16.17.0"
+  }
+}
