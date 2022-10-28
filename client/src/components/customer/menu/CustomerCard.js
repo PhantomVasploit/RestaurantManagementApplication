@@ -11,7 +11,7 @@ const CustomerCard = ({meal})=>{
     const addToCartNotification = ()=>{
         toast.success('Item Added to Cart', {
             position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
@@ -20,27 +20,33 @@ const CustomerCard = ({meal})=>{
     } 
 
     return(
-        <div className="col-md-4 mb-3">
-            <div className="card shadow p-3 rounded">
-            <img className="card-img-top rounded" height="200" width="200" src={meal.imgUrl} alt="mealImage" />
-                <div className="card-body">
-                    <h6 className="">{meal.name}</h6>
-                    <div className="row mt-5">
-                        <div className="col">
-                            <p className="lead">KES {meal.price}</p>
+        <div className="col-md-6 mb-3">
+            <div className="menuList text-light">
+                <div className="row">
+                    <div className="col">
+                        { meal.imgUrl ? <img src={meal.imgUrl} alt="mealImage" className="rounded-circle" width="150px" height="150px" /> : <></> }
+                    </div>
+                    <div className="col menuInfo">
+                        <div className="row">
+                            <div className="col">{ meal.name }</div>
+                            <div className="col">KES { meal.price }</div>
                         </div>
-                        <div className="col">
-                            <button 
-                                className="btn btn-outline-warning"
+                        
+                        <div className="mt-3">
+                            <button
+                                className="btn btn-warning"
                                 onClick={ ()=>{
                                     dispatch(addOrder(meal))
                                     addToCartNotification()
                                 }}
-                                >Order Now</button>
-                                <ToastContainer />
+                            >
+                            Order Now   
+                            </button>
                         </div>
+                        <ToastContainer />
                     </div>
                 </div>
+                
             </div>
         </div>
 

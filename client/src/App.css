@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Poppins:ital,wght@1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300&display=swap');
 
 .landingPage{
   min-height: 100vh;
@@ -90,7 +91,7 @@
 
 .orderPage{
   min-height: 100vh;
-  background-color: #0e0e10;
+  background-color: #1a1814;
   overflow: hidden;
 }
 .removeBtn{
@@ -249,7 +250,7 @@
 .cartContainer table th{
   text-align: left;
   padding: 5px;
-  background: #ff523b;
+  background: #cda45e;
 }
 
 .cartContainer table td{
@@ -286,12 +287,107 @@ th:last-child{
 }
 
 .menuPage{
-  min-height: 100vh;
-  background-color: #0e0e10;
+  min-height: 120vh;
+  background-color: #1a1814;
+}
+
+.menuPage .menu{
+  height: 300px;
+  overflow: scroll;
+}
+
+.menuTitle h2{
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font: "Poppins", sans-serif;
+}
+
+.orderTitle h2{
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font: "Poppins", sans-serif;
+}
+
+.orderTitle h2::after{
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 4px 10px;
+}
+
+.orderTitle p{
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  color: #cda45e;
+}
+
+.menuPage h2::after{
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 4px 10px;
+}
+
+.menuPage p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  color: #cda45e;
+}
+
+.menuFilters{
+  padding: 0;
+  margin: 0 auto 0 auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.menuFilters li{
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px 10px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 10px;
+  transition: all ease-in-out 0.3s;
+  border-radius: 50px;
+  font-family: "Playfair Display", serif;
+}
+
+.menuList img{
+  vertical-align: middle;
+}
+
+.menuList .menuInfo{
+  vertical-align: middle;
 }
 
 .searchSection{
-  min-height: 50vh;
+  min-height: 40vh;
   background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/searchMenuImage.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -335,12 +431,6 @@ th:last-child{
 
 .card img{
   height: 12rem;
-}
-
-.menu-heading span{
-  background: #ffc823;
-  padding: .5rem 1rem;
-  clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
 }
 
 .errorPage{
@@ -408,11 +498,202 @@ th:last-child{
   opacity: .8;
 }
 
+
+
 .ticketPage h1{
   font-size: 45px;
   text-transform: uppercase;
   border-left: 14px solid rgba(255, 235, 59, 0.78);
   padding-left: 12px;
   margin: 18px 8px;
+}
+
+.paymentPage{
+  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/dateReservation.jpg');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Inknut Antiqua', serif;
+  font-family: 'Ravi Prakash', cursive;
+  font-family: 'Lora', serif;
+  font-family: 'Indie Flower', cursive;
+  font-family: 'Cabin', sans-serif;
+	height: 110vh;
+	margin: -20px 0 50px;
+}
+
+.paymentPage h1{
+  font-size: 45px;
+  text-transform: uppercase;
+  border-left: 14px solid rgba(255, 235, 59, 0.78);
+  padding-left: 12px;
+  margin: 18px 8px; 
+}
+
+.paymentContainer{
+  background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+  opacity: .8;
+}
+
+.paymentContainer .sideContainer{
+  position: absolute;
+  top: 0;
+  height: 100%; 
+}
+
+.paymentContainer .paypalContainer{
+  left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.pageContainer .mpesaContainer{
+  left: 0;
+	width: 50%;
+	z-index: 1;
+}
+
+.dashboardPage{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font: 'Poppins', sans-serif; 
+  background-color: #fff; 
+}
+
+.dashboardPage .mainContent{
+  margin-left: 345px;
+
+}
+
+.sidebar{
+  width: 345px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #cda45e;
+  z-index: 100;
+}
+
+.sidebar .sidebarBrand{
+  height: 90px;
+  padding: 1rem 0rem 1rem 2rem;
+  color: #FFF;
+}
+
+.sidebar .sidebarBrand span{
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+.sidebar .sidebarMenu{
+  margin-top: 1rem;
+}
+
+.sidebar .sidebarMenu li{
+  width: 100%;
+  margin-bottom: 1.7rem;
+  padding-left: 2rem;
+  list-style: none;
+}
+
+.sidebar .sidebarMenu a span:first-child{
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+.sidebarMenu a{
+  padding-left: 1rem;
+  display: block;
+  color: #FFF;
+  font-size: 1.1rem;
+}
+
+.dashboardPage header{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+  position: fixed;
+  left: 345px;
+  width: calc(100% - 345px);
+  top: 0;
+  z-index: 100;
+}
+
+.dashboardPage header .userWarpper{
+  display: flex;
+  align-items: center;
+}
+
+.dashboardPage header .userWarpper small{
+  display: inline-block;
+  margin-top: -3px !important;
+}
+
+.dashboardPage header .userWarpper h4{
+  margin-bottom: 0rem !important;
+}
+
+.dashboardPage header h2{
+  color: #555;
+}
+
+.dashboardPage header label span{
+  font-size: 1.7rem;
+  padding-right: 1rem;
+}
+
+.dashboardPage main{
+  margin-top: 85px;
+  padding: 2rem 1.5rem;
+  background-color: #f1f5f9;
+  min-height: calc(100vh - 90px);
+}
+
+.dashboardPage main .dashboardCards{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+}
+
+.dashboardPage main .dashboardCards .singleCard{
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 2px;
+}
+
+.dashboardPage main .dashboardCards .singleCard div:first-child span{
+  color: grey; 
+}
+
+.dashboardPage main .dashboardCards .singleCard div:last-child span{
+  font-size: 3rem;
+  color: #cda45e;
+}
+
+.dashboardPage main .dashboardCards .singleCard:last-child{
+  background: #cda45e;
+}
+
+.dashboardPage main .dashboardCards .singleCard:last-child h1,
+.dashboardPage main .dashboardCards .singleCard:last-child div:first-child span,
+.dashboardPage main .dashboardCards .singleCard:last-child div:last-child span{
+  color: #fff;
 }
 

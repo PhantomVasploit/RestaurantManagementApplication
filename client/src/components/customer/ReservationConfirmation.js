@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faUserAlt, faUtensils, faClock, faCalendarAlt, faUsers } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { cancelReservation } from "../../features/reservation/reservation";
 import { clearOrders } from "../../features/orders/order";
@@ -10,9 +11,42 @@ import { clearOrders } from "../../features/orders/order";
 const ReservationConfirmation = ()=>{
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const customer = useSelector((state)=>state.customer)
     const reservation = useSelector((state)=>state.reservation)
     const orders = useSelector((state)=>state.orders)
+
+    const saveReservation = async ()=>{
+        
+        const data = {
+            customer: customer.email,
+            reservationDate: reservation.reservationDate,
+            reservationTime: reservation.reservationTime,
+            numberOfGuests: reservation.numberOfGuests,
+            orders: [...orders.orders]
+        }
+        // console.log(JSON.stringify(orders.orders))
+        const requestOptions = {
+            headers: {
+                "Acess-Controll-Allow-Origin": "*",
+                "Content-Type": "application/json;charset=UTF-8",
+                "accept":"application/json",
+                "authorization": `Bearer ${customer.authenticationToken}`
+            },
+            body: data
+        }
+
+        console.log(JSON.stringify(data.orders))
+
+        await axios.post('http://127.0.0.1:5005/api/reservations', requestOptions)
+        .then((response)=>{
+            navigate('/customer/payment')
+        })
+        .catch((e)=>{
+            navigate('/error')
+        })
+        
+    }
 
     return(
         <>
@@ -22,9 +56,9 @@ const ReservationConfirmation = ()=>{
                 <div className="ticketContainer">
                     <div className="row justify-content-center align-items-center">
 
-                        <div className="col text-center mt-5">
-                            <h2 className="display-5">14</h2>
-                            <h2 className="lead">FEB</h2>
+                        <div className="col text-center mt-5 ">
+                            <h2 className="lead">{customer.firstName} {customer.lastName}'s</h2>
+                            <h2 className="lead">Reservation</h2>
                         </div>
 
                         <div className="col">
@@ -56,13 +90,18 @@ const ReservationConfirmation = ()=>{
                                 <FontAwesomeIcon icon={faUtensils} />
                                 {
                                     orders.orders.map((meal)=>(
-                                        <p className="lead ms-4" key={meal.name}>{ meal.quantity } plate of { meal.name } </p>
+                                        <p className="lead ms-4" key={meal.itemName}>{ meal.quantityOrdered } { meal.itemName } </p>
                                     ))
                                 }
                             </div>
                             <div className="row mt-4">
                                 <div className="col">
-                                    <Link to='/customer/payment' className="btn btn-success">Confirm Reservation</Link>
+                                    <button 
+                                        className="btn btn-success"
+                                        onClick={()=>{
+                                            saveReservation()
+                                        }}
+                                    >Confirm Reservation</button>
                                 </div>
                                 <div className="col">
                                     <Link 

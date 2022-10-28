@@ -11,21 +11,21 @@ const slice = createSlice({
   name: 'apperitifAndBitters',
   initialState: {
     loading: false,
-    apperitifAndBitters: [],
+    aperitifsAndBitters: [],
     error: ''
   },
   reducers: {
     clearAperiritifsAndBitters: (state)=>{
        state.loading = false
        state.error = ''
-       state.apperitifAndBitters = []
+       state.aperitifsAndBitters = []
     }
   }
   ,
   extraReducers: (builder)=>{
     builder.addCase(fetchAperitifsAndBitters.pending, (state)=>{
       state.loading = true;
-      state.apperitifAndBitters = [];
+      state.aperitifsAndBitters = [];
       state.error = '';
     });
     builder.addCase(fetchAperitifsAndBitters.fulfilled, (state, action)=>{

@@ -37,14 +37,15 @@ const AdminRegister = ()=>{
             {
                 !errorMessage
                 ?
-                    <div className="container-fluid">
-                        <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                            <div className="col formSideImage shadow-lg p-3 bg-white">
-                                <h1 className="display-4 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay"></div>
                             </div>
 
-                            <div className="col ms-5 me-5 mt-5">
+                            <div className="formContainer signUpContainer">
                             <Formik
 
                                 initialValues={{
@@ -69,7 +70,7 @@ const AdminRegister = ()=>{
                                     axios.post('http://127.0.0.1:5000/api/admin/register', requestOptions)
                                     .then((response)=>{
                                         dispatch(login(response))
-                                        navigate('/')
+                                        navigate('/admin/dashboard')
                                     })
                                     .catch((error)=>{
                                         dispatch(loadMessage(error.response))
@@ -79,7 +80,7 @@ const AdminRegister = ()=>{
                                 >
                                     <Form>
                                         <fieldset className="form-group">
-                                            <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign Up</legend>
+                                            <legend className="display-6 mb-4 text-center">Sign Up</legend>
                                             <InputField label='First Name' name='firstName' type='text' />
                                             <InputField label='Last Name' name='lastName' type='text' />
                                             <InputField label='Email' name='email' type='email' />
@@ -87,24 +88,25 @@ const AdminRegister = ()=>{
                                             <InputField label='Password' name='password' type='password' />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
-                                            <input className="btn" type="submit" value="Register" />
+                                            <input className="btn btn-warning" type="submit" value="Register" />
                                         </div>
                                     </Form>
                                 </Formik>
-                                <Link to='/admin/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
+                                <Link to='/admin/login' className="lead text-dark text-decoration-none mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>
                     </div>
                 :
-                    <div className="container-fluid">
-                        <div className="row formContainer">
+                    <div className="formPage">
+                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <div className="pageContainer">
 
-                            <div className="col formSideImage shadow-lg p-3 bg-white">
-                                <h1 className="display-4 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                            <div className="formOverlayContainer">
+                                <div className="formOverlay"></div>
                             </div>
 
-                            <div className="col ms-5 me-5 mt-5">
+                            <div className="formContainer signUpContainer">
                             <Formik
 
                                 initialValues={{
@@ -130,7 +132,7 @@ const AdminRegister = ()=>{
                                     .then((response)=>{
                                         dispatch(login(response))
                                         dispatch(clearMessage())
-                                        navigate('/')
+                                        navigate('/admin/dashboard')
                                     })
                                     .catch((error)=>{
                                         dispatch(loadMessage(error.response))
@@ -140,7 +142,7 @@ const AdminRegister = ()=>{
                                 >
                                     <Form>
                                         <fieldset className="form-group">
-                                            <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign Up</legend>
+                                            <legend className="display-6 mb-4 text-center">Sign In</legend>
                                             <p className="text-danger text-lead">{errorMessage}</p>
                                             <InputField label='First Name' name='firstName' type='text' />
                                             <InputField label='Last Name' name='lastName' type='text' />
@@ -153,7 +155,7 @@ const AdminRegister = ()=>{
                                         </div>
                                     </Form>
                                 </Formik>
-                                <Link to='/admin/login' className="lead text-end mt-3">Already Have An Account? SignIn</Link>
+                                <Link to='/admin/login' className="lead text-dark text-decoration-none mt-3">Already Have An Account? SignIn</Link>
                             </div>
 
                         </div>

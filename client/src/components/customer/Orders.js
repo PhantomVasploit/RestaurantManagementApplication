@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { clearOrders, decreaseQuantity, decreasePrice, increasePrice, increaseQuantity, removeItem } from "../../features/orders/order";
 
 import Navbar from "./Navbar";
@@ -12,13 +13,13 @@ const Orders = ()=>{
 
     useEffect(()=>{
         let cost = 0
-        orders.map((order)=>{return (cost += (order.price * order.quantity) )})
+        orders.map((order)=>{return (cost += (order.itemPrice * order.quantityOrdered) )})
         setTotalCost(cost)
     }, [])
 
     const countTotal = ()=>{
         let count = 0
-        orders.map((order)=> { return count += (order.price * order.quantity)})
+        orders.map((order)=> { return count += (order.itemPrice * order.quantityOrdered)})
         setTotalCost(count)
     }
 
@@ -28,23 +29,27 @@ const Orders = ()=>{
             <div  className="container">
                 <Navbar />
                 <div className="cartContainer mt-5">
-                    <table className="table table-striped text-light">
-                        <tr className="border border-danger rounded-end">
+                    <div className="orderTitle">
+                        <h2>Orders</h2>
+                        <p>Your orders</p>
+                    </div>
+                    <table className="table table-striped text-light mt-4">
+                        <tr className="">
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Sub-total</th>
                         </tr>
                         {
                             orders.map((order)=>(
-                                <tr key={order.name}>
+                                <tr key={order.itemName}>
                                     <td >
                                         <div className="row justify-content-start align-items-center">
                                             <div className="col">
                                                 <img className="border border-warning rounded-end" src={order.imgUrl} alt={order.name} width="150px" height="150px" />
                                             </div>
                                             <div className="col">
-                                                <p className="lead">{ order.name }</p>
-                                                <p className="lead">KES { order.price }</p>
+                                                <p className="lead">{ order.itemName }</p>
+                                                <p className="lead">KES { order.itemPrice }</p>
                                                 <a 
                                                     className="lead text-danger text-decoration-none removeBtn"
                                                     href="/customer/orders"
@@ -69,7 +74,7 @@ const Orders = ()=>{
                                                 >-</button>
                                             </div>
                                             <div className="col lead">
-                                                {order.quantity}
+                                                {order.quantityOrdered}
                                             </div>
                                             <div className="col">
                                                 <button 
@@ -97,7 +102,7 @@ const Orders = ()=>{
                                 <td className="lead">KES { totalCost } </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td><Link to="/customer/reservation/confirm" className="btn btn-success">Confirm</Link></td>
                                 <td><button 
                                 className="btn btn-danger"
                                 onClick={()=>{

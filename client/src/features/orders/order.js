@@ -21,30 +21,30 @@ const slice = createSlice({
             state.itemImgUrl = action.payload.imgUrl
             state.itemQuantity = 1
             state.itemSubTotal = action.payload.price   
-            state.orders = [...state.orders, {name: state.itemName, price: state.itemPrice, imgUrl: state.itemImgUrl, quantity: state.itemQuantity, subTotal: state.itemSubTotal}]
+            state.orders = [...state.orders, {itemName: state.itemName, itemPrice: state.itemPrice, imgUrl: state.itemImgUrl, quantityOrdered: state.itemQuantity, subTotal: state.itemSubTotal}]
         },
         increaseQuantity: (state, action)=>{
             state.orders.map((item)=>{
-               return item.name === action.payload.name ? item.quantity += 1 : item.quantity
+               return item.itemName === action.payload.itemName ? item.quantityOrdered += 1 : item.quantityOrdered
             })
         },
         decreaseQuantity: (state, action)=>{
             state.orders.map((item)=>{
-                return item.name === action.payload.name && item.quantity > 1 ? item.quantity -= 1 : item.quantity 
+                return item.itemName === action.payload.itemName && item.quantityOrdered > 1 ? item.quantityOrdered -= 1 : item.quantityOrdered 
             })
         },
         increasePrice: (state, action)=>{
             state.orders.map((item)=>{
-                return item.name === action.payload.name ? item.subTotal = item.quantity * item.price : item.price 
+                return item.itemName === action.payload.itemName ? item.subTotal = item.itemPrice * item.quantityOrdered : item.itemPrice 
             })
         },
         decreasePrice: (state, action)=>{
             state.orders.map((item)=>{
-                return item.name === action.payload.name ? item.subTotal = item.quantity / item.price : item.price 
+                return item.itemName === action.payload.itemName ? item.subTotal = item.itemPrice / item.quantityOrdered : item.itemPrice 
             })
         },
         removeItem: (state, action)=>{
-            let itemIndex = state.orders.map((order)=> { return state.orders.indexOf(order.name === action.payload.name) })
+            let itemIndex = state.orders.map((order)=> { return state.orders.indexOf(order.quantityOrdered === action.payload.quantityOrdered) })
             state.orders.splice(itemIndex, 1)
         },
         clearOrders: (state)=>{

@@ -46,7 +46,7 @@ const Home = ()=>{
                                 – Winona LaDuke
                                 </p>
                                 <div className="text-center">
-                                    <Link className="btn btn-outline-light" to='/customer/menu'>Place an Order</Link>
+                                    <Link className="btn btn-outline-light" to='/customer/menu/breakfast'>Place an Order</Link>
                                 </div>
                             </div>
                         </div>

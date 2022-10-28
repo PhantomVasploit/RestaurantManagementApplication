@@ -8,7 +8,7 @@ import 'react-time-picker/dist/TimePicker.css'
 import { Link } from "react-router-dom";
 
 
-import { createReservation } from "../../features/reservation/reservation";
+import { createReservation, cancelReservation } from "../../features/reservation/reservation";
 
 const Reservation = ()=>{
 
@@ -17,6 +17,7 @@ const Reservation = ()=>{
     const [time, setTime] = useState(new Date())
     let [numberOfGuests, setNumberOfGuests] = useState(1)
     const customer = useSelector((state)=>state.customer)
+    const reservation = useSelector((state)=>state.reservation)
 
     return(
         <>
@@ -29,7 +30,11 @@ const Reservation = ()=>{
                             <div>
                                 <div>
                                     <h2 className="lead">Select Date</h2>
-                                    <Calendar className="calender" value={date} onChange={setDate} />
+                                    <Calendar 
+                                        className="calender" 
+                                        value={date} 
+                                        onChange={setDate} 
+                                    />
                                 </div>
                                 <div className="mt-3 text-dark">
                                     <h2 className="lead">Select Time</h2>
@@ -61,10 +66,12 @@ const Reservation = ()=>{
                                 </div>
                                 <div className="mt-3 justify-content-center">
                                     <Link 
-                                        to='/customer/menu' 
+                                        to='/customer/menu/breakfast'
                                         className="btn btn-warning"
                                         onClick={()=>{
-                                            dispatch(createReservation({ customer: customer.email, reservationDate: date, reservationTime: time, numberOfGuests }))
+                                            dispatch(cancelReservation())
+                                            dispatch(createReservation({ customer: customer.email, reservationDate: date.toDateString(), reservationTime: time, numberOfGuests }))
+                                            console.log(JSON.stringify(reservation))
                                         }}
                                     >Proceed To Menu</Link>
                                 </div>
