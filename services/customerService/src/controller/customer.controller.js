@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 
 const Customer = require('../model/customer.model');
 const { createToken } = require('../utils/json.token');
-const { producer } = require('../config/producer.config');
-const exchangeName = 'customer';
 
 module.exports.register = async (req, res)=>{
   const { firstName, lastName, email, phoneNumber, password } = req.body.body;
@@ -14,7 +12,6 @@ module.exports.register = async (req, res)=>{
     Customer.create({ firstName, lastName, email, phoneNumber, password })
       .then((customer)=>{
         const jwt = createToken(_.pick(customer, ['_id', 'permissions']));
-        producer(exchangeName, 'create', JSON.stringify(customer));
         res.status(201).json({message: 'Customer account created successfully', jwt, customer: _.pick(customer, ['_id', 'firstName', 'lastName', 'email', 'phoneNumber'])});
       })
       .catch((e)=>{
@@ -51,7 +48,6 @@ module.exports.updateCustomerAccount = (req, res)=>{
   const { firstName, lastName, email, phoneNumber } = req.body
   Customer.findOneAndUpdate({ _id: customerId }, { firstName, lastName, email, phoneNumber })
   .then(()=>{
-    producer(exchangeName, 'update', JSON.stringify({ firstName, lastName, email, phoneNumber }));
     res.status(200).json({message: 'Customer account updated successfully'})
   })
   .catch((e)=>{
@@ -64,8 +60,18 @@ module.exports.deleteCustomerAccount = (req, res)=>{
   const customerId = toId(req.params.customerId);
   Customer.findOneAndRemove({ _id: customerId })
   .then((customer)=>{
-    producer(exchangeName, 'delete', JSON.stringify(customer));
     res.status(200).json({message: 'Customer account deleted successfully'});
+  })
+  .catch((e)=>{
+    throw e;
+  })
+}
+
+
+module.exports.getCustomers = (req, res)=>{
+  Customer.find({})
+  .then((customers)=>{
+    res.status(200).json({message: "Fetch successful", customers});
   })
   .catch((e)=>{
     throw e;

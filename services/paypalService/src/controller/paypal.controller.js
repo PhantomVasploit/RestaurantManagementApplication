@@ -9,6 +9,7 @@ module.exports.initiatePayment = async(req, res)=>{
     await channel.assertQueue('orders', {durable: true})
     channel.consume('orders', (message)=>{
         let parsed = JSON.parse(message.content.toString())
+        console.log(JSON.stringify(parsed))
         channel.ack(message)
 
         let items = []

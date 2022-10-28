@@ -5,20 +5,20 @@ const {producer} = require('../config/producer.config')
 
 
 module.exports.createReservation = (req, res)=>{
-    const { customer, reservationDate, reservationTime, numberOfGuests } = req.body
-    const reqOrders = req.body.orders
+    const { customer, reservationDate, reservationTime, numberOfGuests } = req.body.body
+    const reqOrders = req.body.body.orders
     Reservation.create({customer, reservationDate, reservationTime, numberOfGuests})
     .then((reservation)=>{
         reqOrders.map((order)=>{
             reservation.orders.push(order)
-            reservation.save((err, data)=>{
-                if(err){
-                    throw err
-                }
-                if(data){
-                    return
-                }
-            })
+        })
+        reservation.save((err, data)=>{
+            if(err){
+                throw err
+            }
+            if(data){
+                return
+            }
         })
         res.status(201).json({message: 'Reservation saved', reservation})
         producer(reservation)
