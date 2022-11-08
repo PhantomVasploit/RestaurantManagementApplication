@@ -1,9 +1,13 @@
 const paypal = require('../config/paypal.config')
 const amqp = require('amqplib')
 
+let totalCost = 0
+
+const setTotalCost = (data)=>{
+    return totalCost += data
+}
 
 module.exports.initiatePayment = async(req, res)=>{
-    
     const connection = await amqp.connect()
     const channel = await connection.createChannel()
     await channel.assertQueue('orders', {durable: true})
@@ -13,7 +17,7 @@ module.exports.initiatePayment = async(req, res)=>{
         channel.ack(message)
 
         let items = []
-
+        setTotalCost(parseInt(parsed.totalCost.toFixed(2)))
         parsed.orders.map((order)=>{
             items.push({name: order.itemName, sku: order._id, price: order.itemPrice.toFixed(2), currency: 'USD', quantity: order.quantityOrdered})
             return JSON.stringify(items)
@@ -67,7 +71,7 @@ module.exports.paymentSuccess = (req, res)=>{
         "transactions": [{
             "amount": {
                 "currency": "USD",
-                "total": "2500.00"
+                "total": totalCost.toString()
             }
         }]
     }

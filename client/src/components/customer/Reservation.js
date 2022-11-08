@@ -70,7 +70,7 @@ const Reservation = ()=>{
                                         className="btn btn-warning"
                                         onClick={()=>{
                                             dispatch(cancelReservation())
-                                            dispatch(createReservation({ customer: customer.email, reservationDate: date.toDateString(), reservationTime: time, numberOfGuests }))
+                                            dispatch(createReservation({ customer: customer.phoneNumber, reservationDate: date.toDateString(), reservationTime: time, numberOfGuests }))
                                             console.log(JSON.stringify(reservation))
                                         }}
                                     >Proceed To Menu</Link>

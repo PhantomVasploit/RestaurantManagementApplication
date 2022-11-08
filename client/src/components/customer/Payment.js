@@ -1,8 +1,43 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Payment = ()=>{
+    
+    const navigate = useNavigate()
     const customer = useSelector((state)=>state.customer)
+    const authAxios = axios.create({
+        headers: {
+            authorization: `Bearer ${customer.authenticationToken}`
+        }
+    })
+    const mpesaPayment = async ()=>{
+        await authAxios.post('https://73de-154-159-237-221.in.ngrok.io/api/payment/mpesa/stk-push')
+        .then((response)=>{
+            navigate('/customer/home')
+        })
+        .catch((e)=>{
+            console.log(e.message)
+            navigate('/customer/payment/error')
+        })
+    }
+
+    const paypalPayment = async ()=>{
+        await authAxios.post('http://127.0.0.1:5006/api/payment/paypal/pay')
+        .then((response)=>{
+            if(!response.data){
+                navigate('/customer/payment/error')
+            }else{
+                window.location(response.data.redirectUrl)
+            }
+        })
+        .catch((e)=>{
+            console.log(e.message)
+            navigate('/customer/payment/error')
+        })
+    }
+
     return (
         <div className="paymentPage">
             <h1 className="display-4 text-light">Choose mode of payemnt</h1>
@@ -18,7 +53,7 @@ const Payment = ()=>{
                             </p>
                         </div>
                         <div className="d-flex justify-content-center mt-4">
-                            <button className="btn btn-primary" > Pay With Paypal </button>
+                            <button className="btn btn-primary" onClick={()=>{ paypalPayment() }} > Pay With Paypal </button>
                         </div>
                     </div>
                     <div className="col ">
@@ -32,7 +67,7 @@ const Payment = ()=>{
                             </p>
                         </div>
                         <div className="d-flex justify-content-center mt-4">
-                            <button className="btn btn-success" > Pay With M-Pesa </button>
+                            <button className="btn btn-success" onClick={()=>{ mpesaPayment() }} > Pay With M-Pesa </button>
                         </div>
                     </div>
                 </div>

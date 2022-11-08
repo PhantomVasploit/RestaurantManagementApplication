@@ -34,6 +34,7 @@ import Orders from './components/customer/Orders';
 import Reservation from './components/customer/Reservation';
 import ReservationConfirmation from './components/customer/ReservationConfirmation';
 import Payment from './components/customer/Payment';
+import PaymentErrorPage from './components/general/PaymentErrorPage';
 
 import ChefRegister from './components/chef/Register';
 import ChefLogin from './components/chef/Login';
@@ -76,6 +77,7 @@ function App() {
           <Route path='/customer/reservation' element={ <Reservation /> } />
           <Route path='/customer/reservation/confirm' element={ <ReservationConfirmation /> } />
           <Route path='/customer/payment' element={ <Payment /> } />
+          <Route path='/customer/payment/error' element={ <PaymentErrorPage /> } />
 
           <Route path='/chef/register' element={ <ChefRegister /> } />
           <Route path='/chef/login' element={ <ChefLogin /> } />
