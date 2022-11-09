@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { clearJuice, fetchJuice } from "../../../features/menu/juice/juice";
 import CustomerCard from "./CustomerCard";
-import SearchBar from "./SearchBar";
+import Navbar from "../Navbar";
 import APIConnectionError from "../../general/APIConnectionErrorPage";
 
 const Juice = ()=>{
@@ -46,43 +46,23 @@ const Juice = ()=>{
             {
                 juice.juice.length > 1 && 
                 <div className="menuPage">
-                    <SearchBar />
-                    <section id="menu" className="mt-5">
-                        <div className="container-lg">
-                            <div className="text-start">
-                                <div className="menuTitle">
-                                    <h2>Menu</h2>
-                                    <p>Check Out Our Drinks Menu</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-12 d-flex justify-content-center">
-                                    <ul className="menuFilters">
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/hot-beverage'>HotBeverage</Link>
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/mineral-water'>Mineral Water</Link>
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/aperitif'>Alcoholic Drinks</Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="row mt-5 align-items-center d-flex justify-content-center menu">
-                                {
-                                    juice.juice.map((meal)=>(
-                                        <CustomerCard
-                                            className="mb-5"
-                                            meal = {meal}
-                                            key={meal._id}
-                                        />
-                                    ))
-                                }
-                            </div>
+                   <Navbar />
+                   <section className="menuContainer">
+                        <div className="menuTabs">
+                            <Link to="/customer/menu/hot-beverage" className="text-decoration-none lead">Hot Beverage</Link>
                         </div>
-                    </section>
+                        <h1>Juice<span> Menu</span> </h1>
+                        <div className="boxContainer">
+                            {
+                                juice.juice.map((meal)=>(
+                                    <CustomerCard 
+                                    meal={meal}
+                                    key={meal._id}
+                                     />
+                                ))
+                            }
+                        </div>
+                   </section>
                 </div>
             }
 

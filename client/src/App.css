@@ -5,94 +5,124 @@
 
 .landingPage{
   min-height: 100vh;
+  background-image: url('./assets/homeBackground.jpg'); 
+}
+
+
+section{
+  padding: 2rem 9%;
+}
+
+.categoryPage{
+  min-height: 100vh;
+  background-image: url('./assets/homeBackground.jpg');
+  color: #cda45e;
+}
+
+.categoryPage h1{
+  text-align: center;
+  font-size: 3.5rem;
+  padding: 1rem;
+}
+
+.categoryPage h1 span{
+  color: red;
+}
+
+.categoryPage .categories .boxContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.categoryPage .categories .boxContainer .box{
+  flex: 1 1 30rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 .5rem 1 rem rgba(0, 0, 0, .1);
+  border: .1rem solid rgba(0, 0, 0, .3);
+  cursor: pointer;
+  border-radius: .5rem;
+}
+
+.categoryPage .categories .boxContainer .box .image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: -100%;
+  left: 0;
+}
+
+.categoryPage .categories .boxContainer .box .content{
+  text-align: center;
+  background: #fff;
+  padding: 2rem;
+}
+
+.categoryPage .categories .boxContainer .box .content img{
+  margin: 1.5rem 0;
+}
+
+.categoryPage .categories .boxContainer .box .content h3{
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.categoryPage .categories .boxContainer .box .content p{
+  font-size: 1.6rem;
+  color: #666;
+  padding: 1rem 0;
+}
+
+.categoryPage .categories .boxContainer .box:hover .image{
+  top: 0;
+}
+
+.categoryPage .categories .boxContainer .box:hover .content{
+  transform: translateY(100%);
+}
+
+.landingPage .home{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f7fcca;
+  height: 100%;
 }
 
-.landingPage section .blurClr{
-  position: absolute;
-  filter: blur(150px);
+.landingPage .home .content{
+  flex: 1 1 40rem;
+  padding-top: 6.5rem;
 }
 
-.landingPage section .blurClr:nth-child(1){
-  background-color: #fffd87;
-  width: 500px;
-  height: 500px;
-  right: -50px;
-  top: -250px;
+.landingPage .home .image{
+  flex: 1 1 40rem;
 }
 
-.landingPage section .blurClr:nth-child(2){
-  background-color: #fffd87;
-  width: 300px;
-  height: 300px;
-  left: -100px;
-  bottom: -150px;
-}
-
-.landingPage header{
-  position: absolute;
-  top: 0;
-  left: 0;
+.landingPage .home img{
   width: 100%;
-  padding: 30px 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem;
+  animation: float 3s linear infinite;
 }
 
-.landingPage header .logo{
-  position: relative;
-  text-decoration: none;
-  color:  #8a2435;
-}
+@keyframes float {
+  
+  0%, 100%{
+    transform: translateY(0rem);
+  }
 
-.landingPage .nav{
-  position: relative;
-  display: flex;
+  50%{
+    transform: translateY(3rem);
+  }
 
-}
-
-.landingPage .nav li{
-  list-style: none;
-  margin: 0 10px;
-}
-
-.landingPage .nav li .link{
-  color: #8a2435;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 25px;
-}
-
-.landingPage .content{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.landingPage .content .contentBox{
-  max-width: 500px;
-}
-
-.landingPage .content .contentBox h1{
-  font-size: 4.5rem;
-  line-height: 1em;
-  margin: 10px;
-}
-
-.landingPage .content .contentBox p{
-  font-size: 1em;
-  margin: 30px 10px;
 }
 
 .orderPage{
   min-height: 100vh;
-  background-color: #1a1814;
-  overflow: hidden;
+  background-image: url('./assets/homeBackground.jpg');
 }
 .removeBtn{
   cursor: pointer;
@@ -175,7 +205,7 @@
 }
 
 .reservationPage{
-  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/dateReservation.jpg');
+  background-image: url('./assets/homeBackground.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,6 +213,14 @@
   min-height: 110vh;
   margin: -20px 0 50px;
   overflow: hidden;
+}
+
+.reservationPage .reservationTitle{
+  font-size: 45px;
+  text-transform: uppercase;
+  border-left: 14px solid rgba(255, 235, 59, 0.78);
+  padding-left: 12px;
+  margin: 18px 8px;
 }
 
 .reservationContainer{
@@ -194,7 +232,6 @@
   width: 868px;
   max-width: 100%;
   min-height: 580px;
-  opacity: .8;
 }
 
 .reservationContainer .sideContainer{
@@ -281,31 +318,78 @@ th:last-child{
 
 .customerHomePage{
   min-height: 100vh;
-  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/image2.jpg');
+  background-image:  url('./assets/image2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .menuPage{
-  min-height: 120vh;
-  background-color: #1a1814;
+  min-height: 100vh;
+  background-image: url('./assets//homeBackground.jpg');
 }
 
-.menuPage .menu{
-  height: 300px;
-  overflow: scroll;
+.menuContainer .menuTabs{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.menuTitle h2{
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0;
-  line-height: 1px;
-  margin: 0 0 5px 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #aaaaaa;
-  font: "Poppins", sans-serif;
+.menuContainer h1{
+  text-align: center;
+  font-size: 3.5rem;
+  padding: 1rem;
+}
+
+.menuContainer h1 span{
+  color: red;
+}
+
+.menuContainer .boxContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.menuContainer .boxContainer .box{
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+  border: .1rem solid rgba(0, 0, 0, .3);
+  border-radius: .5rem;
+  text-align: center;
+  flex: 1 1 30rem;
+  position: relative;
+}
+
+.menuContainer .boxContainer .box img{
+  height: 25rem;
+  object-fit: cover;
+  width: 100%;
+  border-radius: .5rem;
+}
+
+.menuContainer .boxContainer .box .price{
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  background: red;
+  color: #fff;
+  font-size: 2rem;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+
+.menuContainer .boxContainer .box h3{
+  color: #333;
+  font-size: 2.5rem;
+  padding-top: 1rem;
+}
+
+.menuContainer .boxContainer .box h3{
+  color: #333;
+  font-size: 2.5rem;
+  padding-top: 1rem;
 }
 
 .orderTitle h2{
@@ -386,12 +470,6 @@ th:last-child{
   vertical-align: middle;
 }
 
-.searchSection{
-  min-height: 40vh;
-  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/searchMenuImage.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
 .welcomeNote{
   width: 300px;
@@ -470,7 +548,7 @@ th:last-child{
 }
 
 .ticketPage{
-  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/dateReservation.jpg');
+  background-image: url('./assets/homeBackground.jpg');
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -495,7 +573,6 @@ th:last-child{
 	width: 868px;
 	max-width: 100%;
 	min-height: 580px;
-  opacity: .8;
 }
 
 
@@ -509,7 +586,7 @@ th:last-child{
 }
 
 .paymentPage{
-  background-image: linear-gradient( rgba(0,0,0,0.95), rgba(0,0,0,0.65), rgba(0,0,0,0.38), rgba(0,0,0,0) ), url('./assets/dateReservation.jpg');
+  background-image: url('./assets/homeBackground.jpg');
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -531,7 +608,60 @@ th:last-child{
   margin: 18px 8px; 
 }
 
-.paymentContainer{
+.paymentPage h2{
+  font-weight: bold;
+  margin: 0;
+}
+
+.paymentPage button{
+  border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.paymentPage button:active{
+  transform: scale(0.95);
+}
+
+.paymentPage button:focus{
+  outline: none;
+}
+
+.paymentPage button .ghost{
+  background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.paymentPage .paypal{
+  background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.paymentPage .mpesa{
+  background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.paymentPage .paymentContainer{
   background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
@@ -541,26 +671,62 @@ th:last-child{
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
-  opacity: .8;
 }
 
-.paymentContainer .sideContainer{
+.paymentPage .paymentContainer .paymentDetailsContainer{
   position: absolute;
-  top: 0;
-  height: 100%; 
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
 }
 
-.paymentContainer .paypalContainer{
+.paymentPage .paymentContainer .paypalContainer{
   left: 0;
 	width: 50%;
 	z-index: 2;
 }
 
-.pageContainer .mpesaContainer{
+.paymentPage .paymentContainer .rightPanelActive .paypalContainer{
+  transform: translateX(100%);
+}
+
+.paymentPage .paymentContainer .mpesaContainer{
   left: 0;
 	width: 50%;
+	opacity: 0;
 	z-index: 1;
 }
+
+
+.paymentPage .paymentContainer .overlayContainer{
+  position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+
+
+.paymentContainer .pageContainer .overlayContainer .overlay{
+  background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
 
 .dashboardPage{
   padding: 0;
@@ -696,4 +862,6 @@ th:last-child{
 .dashboardPage main .dashboardCards .singleCard:last-child div:last-child span{
   color: #fff;
 }
+
+
 

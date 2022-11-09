@@ -23,7 +23,7 @@ const Reservation = ()=>{
         <>
             <div className="reservationPage">
                 
-                <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">Make Reservation</h2>
+                <h2 className="display-4 mb-4 text-center mt-4 reservationTitle">Make Reservation</h2>
                 <div className="reservationContainer">
                     <div className="sideContainer dateTimePickerContainer">
                         <div className="dateTimePicker">
@@ -66,7 +66,7 @@ const Reservation = ()=>{
                                 </div>
                                 <div className="mt-3 justify-content-center">
                                     <Link 
-                                        to='/customer/menu/breakfast'
+                                        to='/customer/menu'
                                         className="btn btn-warning"
                                         onClick={()=>{
                                             dispatch(cancelReservation())

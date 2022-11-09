@@ -33,7 +33,7 @@ const Orders = ()=>{
                         <h2>Orders</h2>
                         <p>Your orders</p>
                     </div>
-                    <table className="table table-striped text-light mt-4">
+                    <table className="table table-striped mt-4">
                         <tr className="">
                             <th>Product</th>
                             <th>Quantity</th>
@@ -96,7 +96,7 @@ const Orders = ()=>{
                     </table>
 
                     <div className="totalPrice mt-5">
-                        <table className="text-light">
+                        <table>
                             <tr>
                                 <td><h5 className="lead">Total</h5></td>
                                 <td className="lead">KES { totalCost } </td>

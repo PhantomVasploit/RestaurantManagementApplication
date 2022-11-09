@@ -37,8 +37,8 @@ const Home = ()=>{
                                     </div>
                             </div>
                             <div className="col">
-                                <h1 className="display-5 text-light text-center">COOX'S RESTAURANT</h1>
-                                <p className="text-light text-lead text-center">
+                                <h1 className="display-5 text-center">COOX'S RESTAURANT</h1>
+                                <p className="text-lead text-center">
                                 “Food for us comes from our relatives, whether they have wings or fins or roots. 
                                 That is how we consider food. Food has a culture. 
                                 It has a history. 
@@ -46,7 +46,7 @@ const Home = ()=>{
                                 – Winona LaDuke
                                 </p>
                                 <div className="text-center">
-                                    <Link className="btn btn-outline-light" to='/customer/menu/breakfast'>Place an Order</Link>
+                                    <Link className="btn btn-warning" to='/customer/menu'>Place an Order</Link>
                                 </div>
                             </div>
                         </div>

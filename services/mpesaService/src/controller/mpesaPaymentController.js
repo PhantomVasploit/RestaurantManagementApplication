@@ -32,7 +32,7 @@ module.exports.mpesaStkPushRequest = async (req, res)=>{
             "PartyA":parsed.customer.substring(1),    
             "PartyB":process.env.MPESA_BUSINESS_SHORT_CODE,    
             "PhoneNumber": parsed.customer.substring(1),    
-            "CallBackURL":"https://73de-154-159-237-221.in.ngrok.io/api/payment/mpesa/stk-push/callback",    
+            "CallBackURL":"https://89b3-154-159-237-212.in.ngrok.io/api/payment/mpesa/stk-push/callback",    
             "AccountReference":"COOX'S RESTAURANT",    
             "TransactionDesc":"Payment for reservaton."
         },

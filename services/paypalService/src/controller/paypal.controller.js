@@ -80,8 +80,7 @@ module.exports.paymentSuccess = (req, res)=>{
         if(error){
             throw error
         } else {
-            console.log("Get Payment Response");
-            console.log(JSON.stringify(payment))
+            console.log("Payment Done");
         }
     })
 }

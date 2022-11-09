@@ -5,7 +5,7 @@ import { clearRum, fetchRum } from "../../../features/menu/rum/rum";
 import { Link } from "react-router-dom";
 
 import CustomerCard from "./CustomerCard";
-import SearchBar from "./SearchBar";
+import Navbar from "../Navbar";
 import APIConnectionError from "../../general/APIConnectionErrorPage";
 
 const Rum = ()=>{
@@ -46,59 +46,28 @@ const Rum = ()=>{
             {
                 rum.rum.length > 1 && 
                 <div className="menuPage">
-                    <SearchBar />
-                    <section id="menu" className="mt-5">
-                        <div className="container-lg">
-                            <div className="text-start">
-                                <div className="menuTitle">
-                                    <h2>Menu</h2>
-                                    <p>Check Out Our Drinks Menu</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-12 d-flex justify-content-center">
-                                    <ul className="menuFilters">
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/aperitif'>AperitifsAndBitters</Link>
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='customer/menu/beer'>Beer</Link>
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/bourbon'>BourbonAndTennessee</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/champgne'>Champagne</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/cider'>Cider</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/cognac'>Cognac</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/gin'>Gin</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/white-wine'>White Wine</Link> 
-                                        </li>
-                                        <li>
-                                            <Link className="text-decoration-none" to='/customer/menu/red-wine'>Red Wine</Link> 
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="row mt-5 align-items-center d-flex justify-content-center menu">
-                                {
-                                    rum.rum.map((meal)=>(
-                                        <CustomerCard
-                                            className="mb-5"
-                                            meal = {meal}
-                                            key={meal._id}
-                                        />
-                                    ))
-                                }
-                            </div>
+                    <Navbar />
+                    <section className="menuContainer">
+                        <div className="menuTabs">
+                            <Link to="/customer/menu/beer" className="text-decoration-none lead">Beer</Link>
+                            <Link to="/customer/menu/bourbon" className="text-decoration-none lead">Bourbon And Tennessee</Link>
+                            <Link to="/customer/menu/champagne" className="text-decoration-none lead">Champagne</Link>
+                            <Link to="/customer/menu/cider" className="text-decoration-none lead">Cider</Link>
+                            <Link to="/customer/menu/cognac" className="text-decoration-none lead">Cognac</Link>
+                            <Link to="/customer/menu/gin" className="text-decoration-none lead">Gin</Link>
+                            <Link to="/customer/menu/red-wine" className="text-decoration-none lead">Red Wine</Link>
+                            <Link to="/customer/menu/white-wine" className="text-decoration-none lead">White Wine</Link>
+                        </div>
+                        <h1>Rum<span> Menu</span> </h1>
+                        <div className="boxContainer">
+                            {
+                                rum.rum.map((meal)=>(
+                                    <CustomerCard 
+                                    meal={meal}
+                                    key={meal._id}
+                                     />
+                                ))
+                            }
                         </div>
                     </section>
                 </div>

@@ -13,6 +13,7 @@ import Dashboard from './components/admin/Dashboard';
 import CustomerRegister from './components/customer/Register';
 import CustomerLogin from './components/customer/Login';
 import Home from './components/customer/Home';
+import Menu from './components/customer/menu/Menu';
 import BreakfastBites from './components/customer/menu/BreakfastBites';
 import AperitifsAndBitters from './components/customer/menu/AperitifsAndBitters';
 import Beer from './components/customer/menu/Beer';
@@ -25,7 +26,6 @@ import HotBeverage from './components/customer/menu/HotBeverage';
 import Juice from './components/customer/menu/Juice';
 import LifeStyle from './components/customer/menu/LifeStyle';
 import MainCourse from './components/customer/menu/MainCourse';
-import MineralWater from './components/customer/menu/MineralWater';
 import PremiumBites from './components/customer/menu/PremiumBites';
 import RedWine from './components/customer/menu/RedWine';
 import Rum from './components/customer/menu/Rum';
@@ -56,6 +56,7 @@ function App() {
           <Route path='/customer/register' element={ <CustomerRegister /> } />
           <Route path='/customer/login' element={ <CustomerLogin /> } />
           <Route path='/customer/home' element={ <Home /> } />
+          <Route path='/customer/menu' element={ <Menu /> } />
           <Route path='/customer/menu/breakfast' element={ <BreakfastBites /> } />
           <Route path='/customer/menu/aperitif' element={ <AperitifsAndBitters /> } />
           <Route path='/customer/menu/beer' element={ <Beer /> } />
@@ -68,7 +69,7 @@ function App() {
           <Route path='/customer/menu/juice' element={ <Juice /> } />
           <Route path='/customer/menu/life-style' element={ <LifeStyle /> } />
           <Route path='/customer/menu/main-course' element={ <MainCourse /> } />
-          <Route path='/customer/menu/mineral-water' element={ <MineralWater /> } />
+          
           <Route path='/customer/menu/premium-bites' element={ <PremiumBites /> } />
           <Route path='/customer/menu/red-wine' element={ <RedWine /> } />
           <Route path='/customer/menu/rum' element={ <Rum /> } />

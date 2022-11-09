@@ -15,7 +15,7 @@ const Navbar = ()=>{
         {
             !customer.email
             ?
-                <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+                <nav className="navbar navbar-expand-lg shadow-5-strong">
                     <div className="container">
                         <NavLink className="navbar-brand logoText fw-bold" to="/">
                             COOX'S RESTAURANT
@@ -42,7 +42,7 @@ const Navbar = ()=>{
                 </nav>
        
             :
-                <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+                <nav className="navbar navbar-expand-lg  shadow-5-strong">
                     <div className="container">
                         <NavLink className="navbar-brand logoText fw-bold" to="/customer/home">
                             COOX'S RESTAURANT

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 
@@ -20,37 +21,24 @@ const CustomerCard = ({meal})=>{
     } 
 
     return(
-        <div className="col-md-6 mb-3">
-            <div className="menuList text-light">
-                <div className="row">
-                    <div className="col">
-                        { meal.imgUrl ? <img src={meal.imgUrl} alt="mealImage" className="rounded-circle" width="150px" height="150px" /> : <></> }
-                    </div>
-                    <div className="col menuInfo">
-                        <div className="row">
-                            <div className="col">{ meal.name }</div>
-                            <div className="col">KES { meal.price }</div>
-                        </div>
-                        
-                        <div className="mt-3">
-                            <button
-                                className="btn btn-warning"
-                                onClick={ ()=>{
-                                    dispatch(addOrder(meal))
-                                    addToCartNotification()
-                                }}
-                            >
-                            Order Now   
-                            </button>
-                        </div>
-                        <ToastContainer />
-                    </div>
-                </div>
-                
+        <>
+            <div className="box">
+                <span className="price">KES {meal.price}</span>
+                <img src={meal.imgUrl} alt="mealImage" />
+                <h3>{meal.name}</h3>
+                <Link 
+                    to='/customer/menu/breakfast' 
+                    className="btn btn-warning"
+                    onClick={()=>{
+                        dispatch(addOrder(meal))
+                        addToCartNotification()
+                    }}
+                >Add To Cart</Link>
+                <ToastContainer />
             </div>
-        </div>
 
-        
+            
+        </>
     )
 }
 

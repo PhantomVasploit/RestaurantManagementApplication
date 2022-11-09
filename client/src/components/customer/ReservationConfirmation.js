@@ -19,7 +19,7 @@ const ReservationConfirmation = ()=>{
     const saveReservation = async ()=>{
         
         const data = {
-            customer: customer.email,
+            customer: customer.phoneNumber,
             reservationDate: reservation.reservationDate,
             reservationTime: reservation.reservationTime,
             numberOfGuests: reservation.numberOfGuests,
@@ -52,7 +52,7 @@ const ReservationConfirmation = ()=>{
         <>
 
             <div className="ticketPage">
-                <h1 className="display-4 text-light">Confirm Reservation</h1>
+                <h1 className="display-4 ">Confirm Reservation</h1>
                 <div className="ticketContainer">
                     <div className="row justify-content-center align-items-center">
 
