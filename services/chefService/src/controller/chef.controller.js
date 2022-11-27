@@ -45,6 +45,15 @@ module.exports.login = async (req, res)=>{
   }
 }
 
+module.exports.getAccounts = (req, res)=>{
+  Chef.find({})
+  .then((chefs)=>{
+    res.status(200).json({message: 'Fetch successful', chefs})
+  })
+  .catch((error)=>{
+    throw error
+  })
+}
 
 module.exports.updateChefAccount = (req, res)=>{
   const { firstName, lastName, email } = req.body;

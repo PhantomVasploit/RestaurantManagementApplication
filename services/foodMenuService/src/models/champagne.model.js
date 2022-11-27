@@ -8,11 +8,7 @@ const champagneSchema = new Schema({
     trim: true,
     unique: [true, "name field should be unique"]
   },
-  priceByBottle: {
-    type: Number,
-    required: [true, "price field is required"]
-  },
-  priceByGlass: {
+  price: {
     type: Number,
     required: [true, "price field is required"]
   },

@@ -27,7 +27,7 @@ const CustomerCard = ({meal})=>{
                 <img src={meal.imgUrl} alt="mealImage" />
                 <h3>{meal.name}</h3>
                 <Link 
-                    to='/customer/menu/breakfast' 
+                    to='' 
                     className="btn btn-warning"
                     onClick={()=>{
                         dispatch(addOrder(meal))

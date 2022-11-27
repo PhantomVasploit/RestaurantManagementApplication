@@ -27,6 +27,27 @@ const LandingPage = ()=>{
             </div>
 
           </section>
+          <section className='steps'>
+            <div className='box'>
+              <img src={require('../../assets/step1.jpg')} alt="orderImage" />
+              <h3 className='lead'>Select your favourite meal</h3>
+            </div>
+
+            <div className='box'>
+              <img src={require('../../assets/step2.jpg')} alt="orderImage" />
+              <h3 className='lead'>Once your meal is ready we'll notify you to pick it up</h3>
+            </div>
+
+            <div className='box'>
+              <img src={require('../../assets/step3.jpg')} alt="orderImage" />
+              <h3 className='lead'>Easy payment Methods</h3>
+            </div>
+
+            <div className='box'>
+              <img src={require('../../assets/step4.jpg')} alt="orderImage" />
+              <h3 className='lead'>Enjoy your meal</h3>
+            </div>
+          </section>
         </div>
 
     </>

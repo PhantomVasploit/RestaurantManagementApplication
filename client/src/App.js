@@ -9,6 +9,12 @@ import ErrorPage from './components/general/ErrorPage';
 import AdminLogin from './components/admin/Login';
 import AdminRegister from './components/admin/Register';
 import Dashboard from './components/admin/Dashboard';
+import SalesAnalysis from './components/admin/SalesAnalysis';
+import Expenses from './components/admin/Expenses';
+import ExpenseAnlysis from './components/admin/ExpenseAnalysis';
+import AddStock from './components/admin/AddStock';
+import CustomerAccounts from './components/admin/CustomerAccounts';
+import ChefAccounts from './components/admin/ChefAccounts';
 
 import CustomerRegister from './components/customer/Register';
 import CustomerLogin from './components/customer/Login';
@@ -52,6 +58,13 @@ function App() {
           <Route path='/admin/login' element={ <AdminLogin /> } />
           <Route path='/admin/register' element={ <AdminRegister /> } />
           <Route path='/admin/dashboard' element={ <Dashboard /> } />
+          <Route path='/admin/dashboard/sale-analysis' element={ <SalesAnalysis /> } />
+          <Route path='/admin/dashboard/expenses' element={ <Expenses /> } />
+          <Route path='/admin/dashboard/expenses-analysis' element={ <ExpenseAnlysis /> } />
+          <Route path='/admin/dashboard/add-stock' element={ <AddStock /> } />
+          <Route path='/admin/dashboard/customer-accounts' element={ <CustomerAccounts /> } />
+          <Route path='/admin/dashboard/chef-accounts' element={ <ChefAccounts /> } />
+
 
           <Route path='/customer/register' element={ <CustomerRegister /> } />
           <Route path='/customer/login' element={ <CustomerLogin /> } />

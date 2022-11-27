@@ -19,10 +19,10 @@ const slice = createSlice({
     },
 
     logout: (state, action)=>{
-      state.admin.firstName = '';
-      state.admin.lastName = '';
-      state.admin.email = '';
-      state.admin.authenticationToken = '';
+      state.firstName = '';
+      state.lastName = '';
+      state.email = '';
+      state.authenticationToken = '';
     }
   }
 });

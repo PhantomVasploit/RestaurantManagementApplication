@@ -1,7 +1,11 @@
-const Reservation = require('../models/reservation.model')
+const _ = require('lodash')
 
+const Reservation = require('../models/reservation.model')
+const Sale = require('../models/sales.model')
 const logger = require('../config/winston.config')
 const {producer} = require('../config/producer.config')
+
+
 
 
 module.exports.createReservation = (req, res)=>{
@@ -11,6 +15,22 @@ module.exports.createReservation = (req, res)=>{
     .then((reservation)=>{
         reqOrders.map((order)=>{
             reservation.orders.push(order)
+            Sale.find({})
+            .then((sales)=>{
+                sales.map((sale)=>{
+                    if(sale.itemName === order.itemName){
+                        sale.quantityOrdered += order.quantityOrdered
+                        return sale.save((err, data)=>{
+                            if(err){
+                                throw err
+                            }
+                            if(data){
+                                return
+                            }
+                        })
+                    }
+                })
+            })
         })
         reservation.save((err, data)=>{
             if(err){
@@ -33,6 +53,16 @@ module.exports.getReservations = (req, res)=>{
     Reservation.find({customer: customerEmail})
     .then((reservation)=>{
         res.status(200).json({message: 'Fetch successful', reservation})
+    })
+    .catch((e)=>{
+        throw e
+    })
+}
+
+module.exports.getSales = (req, res)=>{
+    Sale.find({})
+    .then((sales)=>{
+        res.status(200).json({message: 'Fecth successful', sales})
     })
     .catch((e)=>{
         throw e

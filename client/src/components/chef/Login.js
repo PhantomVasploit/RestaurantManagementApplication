@@ -66,8 +66,8 @@ const ChefLogin = ()=>{
                                                 <Form>
                                                     <fieldset className="form-group">
                                                         <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign In</legend>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
+                                                        <InputField label="Email" name="email" type="text" required />
+                                                        <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
                                                         <input className="btn" type="submit" value="Login" />
@@ -125,8 +125,8 @@ const ChefLogin = ()=>{
                                                     <fieldset className="form-group">
                                                         <legend className="border-bottom mb-4 text-center mt-4">Sign In</legend>
                                                         <p className="text-danger text-lead">{errorMessage}</p>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
+                                                        <InputField label="Email" name="email" type="text" required />
+                                                        <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
                                                         <input className="btn" type="submit" value="Login" />

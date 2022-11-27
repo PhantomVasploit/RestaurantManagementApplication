@@ -1,8 +1,9 @@
 import React from 'react';
-import { faCartShopping, faHome, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
+import HomeIcon from '@material-ui/icons/Home';
+import CartIcon from '@material-ui/icons/ShoppingBasket';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import { logout } from '../../features/customer/customer';
 
@@ -27,7 +28,7 @@ const Navbar = ()=>{
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-">
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/">
-                                <FontAwesomeIcon icon={ faHome } />
+                                <HomeIcon />
                                 </NavLink>
                             </li>
                             <li className="nav-item">
@@ -54,7 +55,7 @@ const Navbar = ()=>{
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-">
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/customer/home">
-                                    <FontAwesomeIcon icon={ faHome } />
+                                    <HomeIcon />
                                 </NavLink>
                             </li>
                             <li className="nav-item">
@@ -62,11 +63,11 @@ const Navbar = ()=>{
                                     orders.length <= 0
                                     ?
                                         <NavLink className="nav-link active" to="/customer/orders">
-                                            <FontAwesomeIcon icon={faCartShopping} />
+                                            <CartIcon />
                                         </NavLink>
                                     :
                                         <NavLink className="nav-link active position-relative" to="/customer/orders">
-                                            <FontAwesomeIcon icon={faCartShopping} />
+                                            <CartIcon />
                                             <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
                                                 {orders.length}
                                             </span>
@@ -78,7 +79,7 @@ const Navbar = ()=>{
                                 onClick={ ()=>{
                                         dispatch(logout())
                                         } }>
-                                    <FontAwesomeIcon icon={faSignOut} />
+                                    <ExitToAppIcon/>
                                 </Link>
                             </li>
                             </ul>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Oval } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -24,22 +23,8 @@ const LifeStyle = ()=>{
         <>
             {
                 lifeStyle.loading &&
-                <div className="container">
-                    <div className="row justify-content-center align-items-center">
-                        <Oval
-                            height={80}
-                            width={80}
-                            color="#de6622"
-                            wrapperStyle={{}}
-                            wrapperClass=""
-                            visible={true}
-                            ariaLabel='oval-loading'
-                            secondaryColor="#de6622"
-                            strokeWidth={2}
-                            strokeWidthSecondary={2}
-
-                            />
-                    </div>
+                <div className="loaderContainer">
+                    <img src={require('../../../assets/loader.gif')} alt="loaderImage" />
                 </div>
             }
 
@@ -49,9 +34,10 @@ const LifeStyle = ()=>{
                     <Navbar />
                     <section className="menuContainer">
                         <div className="menuTabs">
-                            <Link to="/customer/menu/breakfast" className="text-decoration-none lead">Breakfast Bites</Link>
-                            <Link to="/customer/menu/premium-bites" className="text-decoration-none lead">Premium Bites</Link>
-                            <Link to="/customer/menu/main-course" className="text-decoration-none lead">Main Course</Link>
+                            <Link to="/customer/menu" className="btn btn-warning">Main Menu</Link>
+                            <Link to="/customer/menu/breakfast" className="text-decoration-none lead text-dark">Breakfast Bites</Link>
+                            <Link to="/customer/menu/premium-bites" className="text-decoration-none lead text-dark">Premium Bites</Link>
+                            <Link to="/customer/menu/main-course" className="text-decoration-none lead text-dark">Main Course</Link>
                         </div>
                         <h1>Life Style<span> Menu</span> </h1>
                         <div className="boxContainer">

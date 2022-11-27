@@ -1,12 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faUserAlt, faUtensils, faClock, faCalendarAlt, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import UserIcon from '@material-ui/icons/Person';
+import CalenderIcon from '@material-ui/icons/CalendarToday';
+import TimeIcon from '@material-ui/icons/Timer';
+import UsersIcon from '@material-ui/icons/PeopleAlt';
+import LocationIcon from '@material-ui/icons/LocationOn'
+import FoodIcon from '@material-ui/icons/LocalPizza'
 
 import { cancelReservation } from "../../features/reservation/reservation";
 import { clearOrders } from "../../features/orders/order";
+
 
 const ReservationConfirmation = ()=>{
 
@@ -65,29 +70,29 @@ const ReservationConfirmation = ()=>{
                             <p className="lead mt-4">NAKURU, KENYA</p>
                             <h3 className="">COOX'S RESTAURANT</h3>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={faUserAlt} />
+                                <UserIcon/>
                                 <span className="ms-4 lead">{ customer.firstName} {customer.lastName} </span>
                             </div>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={ faCalendarAlt } />
+                                <CalenderIcon />
                                 <span className="ms-4 lead">
                                     { reservation.reservationDate } 
                                 </span>
                             </div>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={faClock} />
+                                <TimeIcon/>
                                 <span className="ms-4 lead">{ reservation.reservationTime } HRS</span>
                             </div>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={faUsers}/>
+                                <UsersIcon />
                                 <span className="ms-4 lead">{reservation.numberOfGuests}</span>
                             </div>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={ faMapMarkerAlt } />
+                                <LocationIcon />
                                 <span className="ms-4 lead">NAKURU KENYA</span>
                             </div>
                             <div className="mt-4">
-                                <FontAwesomeIcon icon={faUtensils} />
+                                <FoodIcon />
                                 {
                                     orders.orders.map((meal)=>(
                                         <p className="lead ms-4" key={meal.itemName}>{ meal.quantityOrdered } { meal.itemName } </p>

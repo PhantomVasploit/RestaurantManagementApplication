@@ -37,15 +37,17 @@ const Home = ()=>{
                                     </div>
                             </div>
                             <div className="col">
-                                <h1 className="display-5 text-center">COOX'S RESTAURANT</h1>
-                                <p className="text-lead text-center">
-                                “Food for us comes from our relatives, whether they have wings or fins or roots. 
-                                That is how we consider food. Food has a culture. 
-                                It has a history. 
-                                It has a story. It has relationships.”
-                                – Winona LaDuke
-                                </p>
-                                <div className="text-center">
+                                <div className="">
+                                    <h1 className="display-5 text-center text-bold">COOX'S RESTAURANT</h1>
+                                    <p className="fs-4 text-center">
+                                    “Food for us comes from our relatives, whether they have wings or fins or roots. 
+                                    That is how we consider food. Food has a culture. 
+                                    It has a history. 
+                                    It has a story. It has relationships.”
+                                    – Winona LaDuke
+                                    </p>
+                                </div>
+                                <div className="text-center mt-3">
                                     <Link className="btn btn-warning" to='/customer/menu'>Place an Order</Link>
                                 </div>
                             </div>

@@ -81,11 +81,11 @@ const AdminRegister = ()=>{
                                     <Form>
                                         <fieldset className="form-group">
                                             <legend className="display-6 mb-4 text-center">Sign Up</legend>
-                                            <InputField label='First Name' name='firstName' type='text' />
-                                            <InputField label='Last Name' name='lastName' type='text' />
-                                            <InputField label='Email' name='email' type='email' />
-                                            <InputField label='Phone Number' name='phoneNumber' type='tel' />
-                                            <InputField label='Password' name='password' type='password' />
+                                            <InputField label='First Name' name='firstName' type='text' required />
+                                            <InputField label='Last Name' name='lastName' type='text' required />
+                                            <InputField label='Email' name='email' type='email' required />
+                                            <InputField label='Phone Number' name='phoneNumber' type='tel' required />
+                                            <InputField label='Password' name='password' type='password' required />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
                                             <input className="btn btn-warning" type="submit" value="Register" />
@@ -144,11 +144,11 @@ const AdminRegister = ()=>{
                                         <fieldset className="form-group">
                                             <legend className="display-6 mb-4 text-center">Sign In</legend>
                                             <p className="text-danger text-lead">{errorMessage}</p>
-                                            <InputField label='First Name' name='firstName' type='text' />
-                                            <InputField label='Last Name' name='lastName' type='text' />
-                                            <InputField label='Email' name='email' type='email' />
-                                            <InputField label='Phone Number' name='phoneNumber' type='tel' />
-                                            <InputField label='Password' name='password' type='password' />
+                                            <InputField label='First Name' name='firstName' type='text' required />
+                                            <InputField label='Last Name' name='lastName' type='text' required/>
+                                            <InputField label='Email' name='email' type='email' required />
+                                            <InputField label='Phone Number' name='phoneNumber' type='tel' required />
+                                            <InputField label='Password' name='password' type='password' required />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
                                             <input className="btn" type="submit" value="Register" />

@@ -28,7 +28,7 @@ const CustomerLogin = ()=>{
                 !errorMessage
                 ?
                     <div className="formPage">
-                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <h2 className="display-4 mb-4 text-center mt-4">COOX'S RESTAURANT</h2>
                         <div className="pageContainer">
 
                             <div className="formOverlayContainer">
@@ -85,7 +85,7 @@ const CustomerLogin = ()=>{
                     </div>
                 :
                     <div className="formPage">
-                        <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                        <h2 className="display-4 mb-4 text-center mt-4 ">COOX'S RESTAURANT</h2>
                         <div className="pageContainer">
 
                             <div className="formOverlayContainer">

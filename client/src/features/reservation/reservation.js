@@ -20,7 +20,7 @@ const slice = createSlice({
             state.customer = ''
             state.reservationDate = ''
             state.reservationTime = ''
-            state.numberOfGuests = null
+            state.numberOfGuests = 0
         }
     }
 })

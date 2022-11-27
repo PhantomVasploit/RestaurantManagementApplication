@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Oval } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
 import { clearHotBeverage, fetchHotBeverage } from "../../../features/menu/hotBeverage/hotBeverage";
@@ -24,22 +23,8 @@ const HotBeverage = ()=>{
         <>
             {
                 hotBeverage.loading &&
-                <div className="container">
-                    <div className="row justify-content-center align-items-center">
-                        <Oval
-                            height={80}
-                            width={80}
-                            color="#de6622"
-                            wrapperStyle={{}}
-                            wrapperClass=""
-                            visible={true}
-                            ariaLabel='oval-loading'
-                            secondaryColor="#de6622"
-                            strokeWidth={2}
-                            strokeWidthSecondary={2}
-
-                            />
-                    </div>
+                <div className="loaderContainer">
+                    <img src={require('../../../assets/loader.gif')} alt="loaderImage" />
                 </div>
             }
 
@@ -49,7 +34,8 @@ const HotBeverage = ()=>{
                     <Navbar />
                     <section className="menuContainer">
                         <div className="menuTabs">
-                            <Link to="/customer/menu/juice" className="text-decoration-none lead">Juice</Link>
+                            <Link to="/customer/menu" className="btn btn-warning">Main Menu</Link>
+                            <Link to="/customer/menu/juice" className="text-decoration-none lead text-dark">Juice</Link>
                         </div>
                         <h1>Hot Beverage<span> Menu</span> </h1>
                         <div className="boxContainer">

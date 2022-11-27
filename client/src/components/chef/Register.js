@@ -80,11 +80,11 @@ const ChefRegister = ()=>{
                                     <Form>
                                         <fieldset className="form-group">
                                             <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign Up</legend>
-                                            <InputField label='First Name' name='firstName' type='text' />
-                                            <InputField label='Last Name' name='lastName' type='text' />
-                                            <InputField label='Email' name='email' type='email' />
-                                            <InputField label='Phone Number' name='phoneNumber' type='tel' />
-                                            <InputField label='Password' name='password' type='password' />
+                                            <InputField label='First Name' name='firstName' type='text' required />
+                                            <InputField label='Last Name' name='lastName' type='text' required />
+                                            <InputField label='Email' name='email' type='email' required />
+                                            <InputField label='Phone Number' name='phoneNumber' type='tel' required />
+                                            <InputField label='Password' name='password' type='password' required />
                                         </fieldset>
                                         <div className="d-flex justify-content-center mt-4">
                                             <input className="btn" type="submit" value="Register" />

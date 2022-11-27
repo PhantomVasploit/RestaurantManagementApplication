@@ -8,11 +8,7 @@ const whiteWineSchema = new Schema({
     trim: true,
     unique: [true, "name field should be unique"]
   },
-  priceByGlass: {
-    type: Number,
-    required: [true, "price field is required"]
-  },
-  priceByBottle: {
+  price: {
     type: Number,
     required: [true, "price field is required"]
   },

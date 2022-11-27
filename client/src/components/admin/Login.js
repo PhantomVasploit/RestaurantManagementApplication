@@ -29,7 +29,7 @@ const AdminLogin = ()=>{
                 ?
                     (
                         <div className="formPage">
-                            <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                            <h2 className="display-4 mb-4 text-center mt-4">COOX'S RESTAURANT</h2>
                             <div className="pageContainer">
 
                                 <div className="formOverlayContainer">
@@ -67,8 +67,8 @@ const AdminLogin = ()=>{
                                                 <Form>
                                                     <fieldset className="form-group">
                                                         <legend className="display-6 mb-4 text-center">Sign In</legend>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
+                                                        <InputField label="Email" name="email" type="text" required />
+                                                        <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
                                                         <input className="btn btn-warning" type="submit" value="Login" />
@@ -87,7 +87,7 @@ const AdminLogin = ()=>{
                 :
                     (
                         <div className="formPage">
-                            <h2 className="border-bottom display-4 mb-4 text-center mt-4 text-light">COOX'S RESTAURANT</h2>
+                            <h2 className="display-4 mb-4 text-center mt-4 ">COOX'S RESTAURANT</h2>
                             <div className="pageContainer">
 
                                 <div className="formOverlayContainer">
@@ -127,8 +127,8 @@ const AdminLogin = ()=>{
                                                     <fieldset className="form-group">
                                                         <legend className="display-6 mb-4 text-center">Sign In</legend>
                                                         <p className="text-danger text-lead">{errorMessage}</p>
-                                                        <InputField label="Email" name="email" type="text" />
-                                                        <InputField label="Password" name="password" type="password" />
+                                                        <InputField label="Email" name="email" type="text" required />
+                                                        <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
                                                         <input className="btn btn-warning" type="submit" value="Login" />

@@ -5,7 +5,9 @@ import { persistReducer } from 'redux-persist'
 
 import adminReducer from '../features/admin/admin';
 import customerReducer from '../features/customer/customer';
+import customerAccountsReducer from '../features/accounts/customerAccounts/customerAccounts';
 import chefReducer from '../features/chef/chef';
+import chefAccountsReducer from '../features/accounts/chefAccounts/chefAccounts';
 import errorMessageReducer from '../features/errorMessage/errorMessage';
 import hotBeverageReducer from '../features/menu/hotBeverage/hotBeverage';
 import mainCourseMealsReducer from '../features/menu/mainCourse/mainCourse';
@@ -26,12 +28,16 @@ import whiteWineReducer from '../features/menu/whiteWine/whiteWine';
 import rumReducer from '../features/menu/rum/rum';
 import orderReducer from '../features/orders/order';
 import reservationReducer from '../features/reservation/reservation';
+import salesReducer from '../features/analysis/salesAnalysis/sales';
+import expensesReducer from '../features/analysis/expensesAnalysis/expenses';
 
 
 const reducers = combineReducers({
     admin: adminReducer,
     customer: customerReducer,
+    customerAccounts: customerAccountsReducer,
     chef: chefReducer,
+    chefAccounts: chefAccountsReducer,
     errorMessage: errorMessageReducer,
     hotBeverage: hotBeverageReducer,
     mainCourseMeals: mainCourseMealsReducer,
@@ -51,7 +57,9 @@ const reducers = combineReducers({
     rum: rumReducer,
     whiteWine: whiteWineReducer,
     orders: orderReducer,
-    reservation: reservationReducer
+    reservation: reservationReducer,
+    sales: salesReducer,
+    expenses: expensesReducer
 });
 
 const persistConfig = {

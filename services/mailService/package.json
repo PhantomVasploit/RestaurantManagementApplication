@@ -1,0 +1,15 @@
+{
+  "name": "mailservice",
+  "version": "1.0.0",
+  "description": "Mail service for sending notifications to customers administrators for various concerns.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "Paul Sanga",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "nodemailer": "^6.8.0"
+  }
+}
