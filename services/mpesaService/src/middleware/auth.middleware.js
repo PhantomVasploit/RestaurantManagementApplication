@@ -17,6 +17,7 @@ module.exports.requireAuth = (req, res, next)=>{
                         return res.status(511).json({message: `User's not authenticated: ${err.message}`})
                     }
                     if(decodedToken){
+                        req.phoneNumber = decodedToken.phoneNumber
                         return next()
                     }
                 })

@@ -30,6 +30,7 @@ import orderReducer from '../features/orders/order';
 import reservationReducer from '../features/reservation/reservation';
 import salesReducer from '../features/analysis/salesAnalysis/sales';
 import expensesReducer from '../features/analysis/expensesAnalysis/expenses';
+import customerReservationsReducer from '../features/customerReservations/customerReservations';
 
 
 const reducers = combineReducers({
@@ -59,7 +60,8 @@ const reducers = combineReducers({
     orders: orderReducer,
     reservation: reservationReducer,
     sales: salesReducer,
-    expenses: expensesReducer
+    expenses: expensesReducer,
+    customerReservations: customerReservationsReducer
 });
 
 const persistConfig = {

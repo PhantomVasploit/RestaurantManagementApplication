@@ -28,14 +28,15 @@ const ChefLogin = ()=>{
                 !errorMessage 
                 ?
                     (
-                        <div className="container-fluid">
-                            <div className="row formContainer">
+                        <div className="formPage">
+                            <h2 className="display-4 mb-4 text-center mt-4">COOX'S RESTAURANT</h2>
+                            <div className="pageContainer">
 
-                                <div className="col formSideImage shadow-lg p-3 bg-white">
-                                    <h1 className="display-3 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                                <div className="formOverlayContainer">
+                                    <div className="formOverlay"></div>
                                 </div>
 
-                                <div className="col ms-5 me-5 mt-5">
+                                <div className="formContainer signUpContainer">
                                     <Formik 
                                     initialValues={{
                                         password: "",
@@ -54,7 +55,7 @@ const ChefLogin = ()=>{
                                         axios.post('http://127.0.0.1:5002/api/chef/login', requestOptions)
                                         .then((response)=>{
                                             dispatch(login(response))
-                                            navigate('/')
+                                            navigate('/chef/dashboard')
                                         })
                                         .catch((error)=>{
                                             dispatch(loadMessage(error.response))
@@ -65,19 +66,19 @@ const ChefLogin = ()=>{
                                             formik =>(
                                                 <Form>
                                                     <fieldset className="form-group">
-                                                        <legend className="border-bottom display-3 mb-4 text-center mt-4">Sign In</legend>
+                                                        <legend className="display-6 mb-4 text-center">Sign In</legend>
                                                         <InputField label="Email" name="email" type="text" required />
                                                         <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
-                                                        <input className="btn" type="submit" value="Login" />
+                                                        <input className="btn btn-warning" type="submit" value="Login" />
                                                     </div>
+                                                    <Link to='/chef/register' className="lead text-dark text-decoration-none mt-3">Don't have an account? SignUp</Link>
                                                 </Form>
                                             )
                                         }
 
                                     </Formik>
-                                    <Link to='/chef/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
                                 </div>
 
                             </div>
@@ -85,14 +86,15 @@ const ChefLogin = ()=>{
                     ) 
                 :
                     (
-                        <div className="container-fluid">
-                            <div className="row formContainer">
+                        <div className="formPage">
+                            <h2 className="display-4 mb-4 text-center mt-4 ">COOX'S RESTAURANT</h2>
+                            <div className="pageContainer">
 
-                                <div className="col formSideImage shadow-lg p-3 bg-white">
-                                    <h1 className="display-3 d-flex justify-content-center formSideText">COOX'S RESTAURANT</h1>
+                                <div className="formOverlayContainer">
+                                    <div className="formOverlay"></div>
                                 </div>
 
-                                <div className="col ms-5 me-5 mt-5">
+                                <div className="formContainer signUpContainer">
                                     <Formik 
                                     initialValues={{
                                         password: "",
@@ -112,7 +114,7 @@ const ChefLogin = ()=>{
                                         .then((response)=>{
                                             dispatch(login(response))
                                             dispatch(clearMessage())
-                                            navigate('/')
+                                            navigate('/chef/dashboard')
                                         })
                                         .catch((error)=>{
                                             dispatch(loadMessage(error.response))
@@ -123,20 +125,21 @@ const ChefLogin = ()=>{
                                             formik =>(
                                                 <Form>
                                                     <fieldset className="form-group">
-                                                        <legend className="border-bottom mb-4 text-center mt-4">Sign In</legend>
+                                                        <legend className="display-6 mb-4 text-center">Sign In</legend>
                                                         <p className="text-danger text-lead">{errorMessage}</p>
                                                         <InputField label="Email" name="email" type="text" required />
                                                         <InputField label="Password" name="password" type="password" required />
                                                     </fieldset>
                                                     <div className="d-flex justify-content-center mt-4">
-                                                        <input className="btn" type="submit" value="Login" />
+                                                        <input className="btn btn-warning" type="submit" value="Login" />
                                                     </div>
+                                                    <Link to='/chef/register' className="lead text-dark text-decoration-none mt-3">Don't have an account? SignUp</Link>
                                                 </Form>
                                             )
                                         }
 
                                     </Formik>
-                                    <Link to='/chef/register' className="lead text-end mt-3">Don't have an account? SignUp</Link>
+                                    
                                 </div>
 
                             </div>

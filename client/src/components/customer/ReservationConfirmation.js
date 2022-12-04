@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserIcon from '@material-ui/icons/Person';
 import CalenderIcon from '@material-ui/icons/CalendarToday';
@@ -20,16 +20,20 @@ const ReservationConfirmation = ()=>{
     const customer = useSelector((state)=>state.customer)
     const reservation = useSelector((state)=>state.reservation)
     const orders = useSelector((state)=>state.orders)
+    const {state} = useLocation()
+    const totalCost = state.totalCost
 
     const saveReservation = async ()=>{
         
         const data = {
-            customer: customer.phoneNumber,
+            customer: customer.email,
             reservationDate: reservation.reservationDate,
             reservationTime: reservation.reservationTime,
             numberOfGuests: reservation.numberOfGuests,
             orders: [...orders.orders]
         }
+
+        console.log(JSON.stringify(data))
         // console.log(JSON.stringify(orders.orders))
         const requestOptions = {
             headers: {
@@ -41,11 +45,9 @@ const ReservationConfirmation = ()=>{
             body: data
         }
 
-        console.log(JSON.stringify(data.orders))
-
         await axios.post('http://127.0.0.1:5005/api/reservations', requestOptions)
         .then((response)=>{
-            navigate('/customer/payment')
+            navigate('/customer/payment', {state: {totalCost}})
         })
         .catch((e)=>{
             navigate('/error')

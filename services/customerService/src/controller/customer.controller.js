@@ -33,7 +33,8 @@ module.exports.login = async(req, res)=>{
       if(!auth){
         res.status(400).json({message: 'Invalid login credentials'});
       }else {
-        const jwt = createToken(_.pick(customer, ['_id', 'permissions']));
+        const phoneNumber = customer.phoneNumber.toString().substring(1)
+        const jwt = createToken({_id: customer._id, permissions: customer.permissions, phoneNumber});
         res.status(200).json({message: 'Login successful', jwt, customer: _.pick(customer, ['_id', 'firstName', 'lastName', 'email', 'phoneNumber'])});
       }
     }

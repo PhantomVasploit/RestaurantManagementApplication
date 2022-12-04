@@ -2,7 +2,7 @@ import React from "react";
 import { Formik ,Form } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import InputField from "../general/InputField";
 

@@ -1,54 +1,44 @@
 const axios = require('axios')
-const amqp = require('amqplib')
-
 const MPesaTransaction = require('../model/mpesaTransaction.model')
 
 module.exports.mpesaStkPushRequest = async (req, res)=>{
+    const date = new Date()
+    const timeStamp = date.getFullYear() +
+    ("0" + (date.getMonth() + 1)).slice(-2)+
+    ("0" + date.getDate()).slice(-2)+
+    ("0" + date.getHours()).slice(-2)+
+    ("0" + date.getMinutes()).slice(-2)+
+    ("0" + date.getSeconds()).slice(-2)
 
-    const connection = await amqp.connect(process.env.AMQP_URI)
-    const channel = await connection.createChannel()
-    await channel.assertQueue('orders', {durable: true})
-    channel.consume('orders', async (message)=>{
-        let parsed = JSON.parse(message.content.toString())
-        channel.ack(message)
-        const date = new Date()
-        const timeStamp = date.getFullYear() +
-        ("0" + (date.getMonth() + 1)).slice(-2)+
-        ("0" + date.getDate()).slice(-2)+
-        ("0" + date.getHours()).slice(-2)+
-        ("0" + date.getMinutes()).slice(-2)+
-        ("0" + date.getSeconds()).slice(-2)
+    const password = new Buffer.from(process.env.MPESA_BUSINESS_SHORT_CODE + process.env.MPESA_PASS_KEY + timeStamp).toString('base64')
 
-        const password = new Buffer.from(process.env.MPESA_BUSINESS_SHORT_CODE + process.env.MPESA_PASS_KEY + timeStamp).toString('base64')
+    await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
 
-        await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
+    {    
+        "BusinessShortCode":process.env.MPESA_BUSINESS_SHORT_CODE,    
+        "Password": password,    
+        "Timestamp":timeStamp,    
+        "TransactionType": "CustomerPayBillOnline",    
+        "Amount": req.body.body,    
+        "PartyA": req.phoneNumber,    
+        "PartyB":process.env.MPESA_BUSINESS_SHORT_CODE,    
+        "PhoneNumber": req.phoneNumber,    
+        "CallBackURL":"https://7e53-154-159-237-162.in.ngrok.io/api/payment/mpesa/stk-push/callback",    
+        "AccountReference":"COOX'S RESTAURANT",    
+        "TransactionDesc":"Payment for reservaton."
+    },
 
-        {    
-            "BusinessShortCode":process.env.MPESA_BUSINESS_SHORT_CODE,    
-            "Password": password,    
-            "Timestamp":timeStamp,    
-            "TransactionType": "CustomerPayBillOnline",    
-            "Amount": parsed.totalCost,    
-            "PartyA":parsed.customer.substring(1),    
-            "PartyB":process.env.MPESA_BUSINESS_SHORT_CODE,    
-            "PhoneNumber": parsed.customer.substring(1),    
-            "CallBackURL":"https://89b3-154-159-237-212.in.ngrok.io/api/payment/mpesa/stk-push/callback",    
-            "AccountReference":"COOX'S RESTAURANT",    
-            "TransactionDesc":"Payment for reservaton."
-        },
-
-        {
-            headers: {
-                Authorization: `Bearer ${req.token}`
-            }
-        })
-        .then((response)=>{
-            res.status(200).json({message: 'STK Push initiated', data: response.data})
-        })
-        .catch((error)=>{
-            throw error
-        })
-    }, { noAck: false })
+    {
+        headers: {
+            Authorization: `Bearer ${req.token}`
+        }
+    })
+    .then((response)=>{
+        res.status(200).json({message: 'STK Push initiated', data: response.data})
+    })
+    .catch((error)=>{
+        throw error
+    })
 }
 
 module.exports.mpesaStkCallBack = (req, res)=>{

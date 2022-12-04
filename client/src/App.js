@@ -44,6 +44,7 @@ import PaymentErrorPage from './components/general/PaymentErrorPage';
 
 import ChefRegister from './components/chef/Register';
 import ChefLogin from './components/chef/Login';
+import ChefDashboard from './components/chef/Dashboard';
 
 import Error404 from './components/general/Error404';
 
@@ -95,6 +96,7 @@ function App() {
 
           <Route path='/chef/register' element={ <ChefRegister /> } />
           <Route path='/chef/login' element={ <ChefLogin /> } />
+          <Route path='/chef/dashboard' element={ <ChefDashboard /> } />
 
           <Route path='*' element={<Error404/>} />
         </Routes>

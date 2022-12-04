@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { clearOrders } from "../../features/orders/order";
 import { cancelReservation } from "../../features/reservation/reservation";
@@ -11,13 +11,18 @@ const Payment = ()=>{
     const navigate = useNavigate()
     const customer = useSelector((state)=>state.customer)
     const dispatch = useDispatch()
+    const {state} = useLocation()
+    console.log(state)
+    const requestOptions = {
+        body: state.totalCost
+    }
     const authAxios = axios.create({
         headers: {
             authorization: `Bearer ${customer.authenticationToken}`
         }
     })
     const mpesaPayment = async ()=>{
-        await authAxios.post('https://89b3-154-159-237-212.in.ngrok.io/api/payment/mpesa/stk-push')
+        await authAxios.post('https://coox-restaurant-mpesa-service.herokuapp.com/api/payment/mpesa/stk-push', requestOptions)
         .then((response)=>{
             navigate('/customer/home')
         })

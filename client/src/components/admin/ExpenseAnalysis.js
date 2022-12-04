@@ -49,6 +49,7 @@ const ExpenseAnlysis = ()=>{
     data.map((stock)=>{
         stockData.labels.push(new Date(stock.dateOfPurchase).toLocaleDateString())
         stockData.datasets[0].data.push(parseInt(stock.quantityPurchased) * parseInt(stock.itemPrice))
+        return stockData
     })
 
     console.log(JSON.stringify(stockData))

@@ -1002,3 +1002,12 @@ th:last-child{
 	margin: 8px 0;
 	width: 100%;
 }
+
+.alert{
+  width:50%;
+  margin:20px auto;
+  padding:30px;
+  position:relative;
+  border-radius:5px;
+  box-shadow:0 0 15px 5px #ccc;
+}

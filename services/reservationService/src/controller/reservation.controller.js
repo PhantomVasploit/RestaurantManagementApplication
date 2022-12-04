@@ -3,7 +3,8 @@ const _ = require('lodash')
 const Reservation = require('../models/reservation.model')
 const Sale = require('../models/sales.model')
 const logger = require('../config/winston.config')
-const {producer} = require('../config/producer.config')
+const { producer } = require('../config/orderProducer.config')
+const { reservationProducer } = require('../config/reservationProducer.config')
 
 
 
@@ -42,6 +43,7 @@ module.exports.createReservation = (req, res)=>{
         })
         res.status(201).json({message: 'Reservation saved', reservation})
         producer(reservation)
+        reservationProducer(reservation)
     })
     .catch((e)=>{
         throw e
@@ -53,6 +55,17 @@ module.exports.getReservations = (req, res)=>{
     Reservation.find({customer: customerEmail})
     .then((reservation)=>{
         res.status(200).json({message: 'Fetch successful', reservation})
+    })
+    .catch((e)=>{
+        throw e
+    })
+}
+
+module.exports.getReservationsByDate = (req, res)=>{
+    const date = new Date(req.params.date).toDateString()
+    Reservation.find({reservationDate: date})
+    .then((reservations)=>{
+        res.status(200).json({message: 'Fetch successful', reservations})
     })
     .catch((e)=>{
         throw e

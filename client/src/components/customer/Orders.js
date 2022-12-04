@@ -102,7 +102,7 @@ const Orders = ()=>{
                                 <td className="lead">KES { totalCost } </td>
                             </tr>
                             <tr>
-                                <td><Link to="/customer/reservation/confirm" className="btn btn-success">Confirm</Link></td>
+                                <td><Link to="/customer/reservation/confirm" state={{ totalCost }} className="btn btn-success">Confirm</Link></td>
                                 <td><button 
                                 className="btn btn-danger"
                                 onClick={()=>{

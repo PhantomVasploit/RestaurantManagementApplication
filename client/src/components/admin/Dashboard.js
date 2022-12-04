@@ -16,15 +16,6 @@ const Dashboard = ()=>{
                         <Sidebar />
                         <section className="middle">
                             <Overview />
-                            <section className="expenseAnalytics">
-
-                            </section>
-                            <section className="salesAnalytics">
-
-                            </section>
-                            <section className="transactions">
-
-                            </section>
                         </section>
                         <section className="right">
 
