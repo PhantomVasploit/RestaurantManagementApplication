@@ -31,8 +31,8 @@ app.use(errorLogger)
 
 
 const server = app.listen(port, ()=>{
-    console.log(`Payment service running on: http://127.0.0.1:${port}`)
-    logger.info(`Payment service running on: http://127.0.0.1:${port}`)
+    console.log(`PayPal service running on: http://127.0.0.1:${port}`)
+    logger.info(`PayPal service running on: http://127.0.0.1:${port}`)
 })
 
 module.exports = server

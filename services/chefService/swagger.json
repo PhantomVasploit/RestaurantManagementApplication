@@ -13,7 +13,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "127.0.0.1:5001",
+  "host": "127.0.0.1:5002",
   "basePath": "/api/chef",
   "tags": [
     {
@@ -195,13 +195,13 @@
           "type": "string",
           "description": "This is the chef's email address",
           "uinqueItems": true,
-          "example": "paulvasgit99@gmail.com"
+          "example": "paulvasgit@gmail.com"
         },
         "phoneNumber": {
           "type": "string",
           "description": "This is the chef's phone number",
           "uinqueItems": true,
-          "example": "254757255894"
+          "example": "+254757255894"
         },
         "password": {
           "type": "string",

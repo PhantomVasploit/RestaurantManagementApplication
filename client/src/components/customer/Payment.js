@@ -22,7 +22,7 @@ const Payment = ()=>{
         }
     })
     const mpesaPayment = async ()=>{
-        await authAxios.post('https://coox-restaurant-mpesa-service.herokuapp.com/api/payment/mpesa/stk-push', requestOptions)
+        await authAxios.post('https://10c1-154-159-76-120.eu.ngrok.io/api/payment/mpesa/stk-push', requestOptions)
         .then((response)=>{
             navigate('/customer/home')
         })
